@@ -1,21 +1,27 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Plexus Code | AI-Powered Software & Cybersecurity",
-  description: "Secure by design. Scalable by default. High-performance software engineering, autonomous AI agents, and defensive cybersecurity architectures.",
+  title: "Plexus Code | AI-Powered Software & Defensive Cybersecurity",
+  description: "High-performance web platforms, autonomous AI agents, and AppSec defensive architectures.",
+  icons: {
+    icon: [
+      { url: "/logo.png", href: "/logo.png" },
+    ],
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className="bg-background text-slate-100 selection:bg-cyber-cyan selection:text-black min-h-screen relative bg-grid-pattern">
-        {/* Aura de resplandor superior */}
-        <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-500/10 blur-[140px] pointer-events-none rounded-full" />
+    <html lang="es" className="dark">
+      <body className="bg-[#06090f] text-slate-100 antialiased selection:bg-cyan-400 selection:text-black">
         {children}
       </body>
     </html>

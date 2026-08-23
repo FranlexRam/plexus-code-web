@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ServicesBento from "@/components/ServicesBento";
 import TechStack from "@/components/TechStack";
+import CtaBanner from "@/components/CtaBanner";
 import ContactTerminal from "@/components/ContactTerminal";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <ServicesBento />
         <TechStack />
+        <CtaBanner />
         <ContactTerminal />
         <Footer />
       </main>

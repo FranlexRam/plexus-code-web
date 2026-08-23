@@ -1,63 +1,270 @@
 // src/components/TechStack.tsx
 "use client";
 
+import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Globe, TerminalSquare, Database, Layers, Cpu, Shield } from "lucide-react";
 
-const stackItems = [
-  { name: "Next.js 15 & React", category: "Frontend & SSR", icon: Globe, desc: "Server Actions, Edge Rendering & Optimización Core Web Vitals." },
-  { name: "TypeScript & Zod", category: "Type Safety & Validation", icon: TerminalSquare, desc: "Tipado estricto y validación de esquemas en tiempo de ejecución." },
-  { name: "Supabase & Postgres", category: "Database & Auth", icon: Database, desc: "Políticas Row Level Security (RLS) y sincronización en tiempo real." },
-  { name: "Tailwind CSS", category: "Design System", icon: Layers, desc: "Interfaces fluidas, modo oscuro y microinteracciones de alto rendimiento." },
-  { name: "Autonomous AI / LLMs", category: "Agentic AI", icon: Cpu, desc: "Agentes autónomos conectados a bases vectoriales y APIs empresariales." },
-  { name: "AppSec & Zero Trust", category: "Security Architecture", icon: Shield, desc: "Auditorías de seguridad, protección de endpoints y mitigación OWASP." },
-];
+type Category = "frameworks" | "databases" | "security" | "ai" | "cloud";
+
+interface TechItem {
+  name: string;
+  svg: React.ReactNode;
+}
+
+const stackData: Record<Category, TechItem[]> = {
+  frameworks: [
+    {
+      name: "Next.js",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 180 180" fill="none">
+          <circle cx="90" cy="90" r="90" fill="black"/>
+          <path d="M149.508 157.438L69.1478 54H54V125.979H66.9836V69.3831L139.999 164.845C143.333 162.614 146.509 160.137 149.508 157.438Z" fill="white"/>
+          <path d="M115.016 54H128V126H115.016V54Z" fill="white"/>
+        </svg>
+      ),
+    },
+    {
+      name: "TypeScript",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 128 128">
+          <path fill="#3178C6" d="M0 0h128v128H0z"/>
+          <path fill="#FFF" d="M116.5 76.7c-1.7-2.8-4.2-5-7.6-6.6-3.4-1.6-7.3-2.7-11.7-3.4-3.1-.5-5.9-1.2-8.3-2-2.4-.8-4.3-1.8-5.7-3-1.4-1.2-2.1-2.7-2.1-4.5 0-1.8.7-3.3 2.1-4.5s3.3-2.1 5.7-2.7c2.4-.6 5-.9 7.8-.9 3.3 0 6.4.4 9.3 1.2 2.9.8 5.4 2 7.5 3.6 2.1 1.6 3.6 3.5 4.5 5.8l9.8-6.1c-1.6-3.6-3.9-6.6-6.9-9.1-3-2.5-6.7-4.4-11.1-5.7-4.4-1.3-9.3-1.9-14.7-1.9-5.7 0-10.9.8-15.6 2.4-4.7 1.6-8.5 3.9-11.4 7-2.9 3.1-4.3 6.9-4.3 11.4 0 4.6 1.4 8.4 4.2 11.4 2.8 3 6.6 5.3 11.4 6.9 3.4 1.1 6.8 2 10.2 2.7 3.4.7 6.4 1.4 9 2.2 2.6.8 4.7 1.8 6.3 3.1 1.6 1.3 2.4 2.9 2.4 4.8 0 2.2-1 4.1-3 5.7-2 1.6-4.7 2.8-8.1 3.6-3.4.8-7.2 1.2-11.4 1.2-4.7 0-9.2-.7-13.5-2.1-4.3-1.4-8-3.5-11.1-6.3-3.1-2.8-5.3-6.4-6.6-10.8l-10.4 5.9c1.8 5.6 4.7 10.3 8.7 14.1s8.9 6.6 14.7 8.4c5.8 1.8 12.1 2.7 18.9 2.7 6.3 0 12.1-.9 17.4-2.7 5.3-1.8 9.6-4.4 12.9-7.8 3.3-3.4 5-7.7 5-12.9.1-4.8-1.3-8.8-4.2-12zM21.2 43.1h45.6V33.5H9.6v9.6h45.6v55.8h11.6V43.1z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "React 19",
+      svg: (
+        <svg className="w-8 h-8" viewBox="-11.5 -10.23174 23 20.46348">
+          <circle cx="0" cy="0" r="2.05" fill="#61dafb"/>
+          <g stroke="#61dafb" strokeWidth="1" fill="none">
+            <ellipse rx="11" ry="4.2"/>
+            <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+            <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+          </g>
+        </svg>
+      ),
+    },
+    {
+      name: "Node.js",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 256 289">
+          <path fill="#339933" d="M128 0L0 73.9v141.2L128 289l128-73.9V73.9L128 0zm88.7 197.8L128 249.2l-88.7-51.4V94.8L128 43.4l88.7 51.4v103z"/>
+          <path fill="#339933" d="M128 64.9L59.6 104.4v78.9L128 222.8l68.4-39.5v-78.9L128 64.9z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Tailwind CSS",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="#38BDF8">
+          <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Python",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 128 128">
+          <path fill="#3776AB" d="M63.5 0C28.8 0 30.9 15.1 30.9 15.1l.1 15.6h33.3v4.7H17.2S0 33.5 0 68.2c0 34.6 15 33.4 15 33.4h8.9V88.8s-.5-15.1 14.8-15.1h33.2s14.2.2 14.2-13.8V13.8S88.6 0 63.5 0zm-14 10.3c3 0 5.4 2.4 5.4 5.4s-2.4 5.4-5.4 5.4-5.4-2.4-5.4-5.4 2.4-5.4 5.4-5.4z"/>
+          <path fill="#FFD43B" d="M64.5 128c34.7 0 32.6-15.1 32.6-15.1l-.1-15.6H63.7v-4.7h47.1s17.2 1.9 17.2-32.8c0-34.6-15-33.4-15-33.4h-8.9v12.8s.5 15.1-14.8 15.1H56.1s-14.2-.2-14.2 13.8v46.1s-2.5 13.8 22.6 13.8zm14-10.3c-3 0-5.4-2.4-5.4-5.4s2.4-5.4 5.4-5.4 5.4 2.4 5.4 5.4-2.4 5.4-5.4 5.4z"/>
+        </svg>
+      ),
+    },
+  ],
+  databases: [
+    {
+      name: "Supabase",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 109 113" fill="none">
+          <path d="M63.7076 110.284C60.8481 113.885 55.0753 111.904 55.0003 107.314L54.1484 55.2446H97.7716C106.357 55.2446 111.027 65.2618 105.474 72.2536L63.7076 110.284Z" fill="#3ECF8E"/>
+          <path d="M45.317 2.71635C48.1765 -0.884517 53.9493 1.09635 54.0243 5.68645L54.4981 57.7554H11.2526C2.66723 57.7554 -2.00332 47.7382 3.54972 40.7464L45.317 2.71635Z" fill="#3ECF8E"/>
+        </svg>
+      ),
+    },
+    {
+      name: "PostgreSQL",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 128 128">
+          <path fill="#336791" d="M63.5 7.4c-29.8 0-42.2 20.3-43.2 38.6-.9 17.5 7.4 31.7 15.6 39.5-1.5 8.1-5.3 22-11.4 28.5 12.3-1.7 22.3-9.5 26.6-17.6 4 1.1 8.2 1.6 12.4 1.6 30.1 0 54.5-20.6 54.5-50.3C118 17.9 93.6 7.4 63.5 7.4z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Redis",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 128 128">
+          <path fill="#DC382D" d="M117.8 77.4L64 104.9 10.2 77.4 0 72.2l64-32.7 64 32.7-10.2 5.2z"/>
+          <path fill="#A41E11" d="M64 104.9l53.8-27.5V97L64 124.5 10.2 97V77.4L64 104.9z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Prisma",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 128 128">
+          <path fill="#2D3748" d="M109.9 99.4L68.8 4.2c-1.8-4.2-7.8-4.2-9.6 0L18.1 99.4c-1.8 4.2 1.2 8.9 5.8 8.9h80.2c4.6 0 7.6-4.7 5.8-8.9z"/>
+          <path fill="#16A39A" d="M64 14.5L25.9 102.3h76.2L64 14.5z"/>
+        </svg>
+      ),
+    },
+  ],
+  security: [
+    {
+      name: "Zero Trust",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" strokeWidth="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Cloudflare",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 128 128">
+          <path fill="#F38020" d="M97.5 56.6c-1.7-16-15.3-28.5-31.8-28.5-13.6 0-25.3 8.6-29.8 20.9-1.9-.5-3.9-.7-6-.7-12.7 0-23 10.3-23 23s10.3 23 23 23h67.6c11.3 0 20.5-9.2 20.5-20.5 0-9.6-6.6-17.7-15.5-19.8-.7.8-1.8 1.4-3 1.4-.7 0-1.3-.2-1.8-.5-.6 7.6-7 13.5-14.8 13.5H30.5c-7.2 0-13-5.8-13-13s5.8-13 13-13c1.7 0 3.3.3 4.8.9C38.6 33 50.8 25 64.7 25c13.2 0 24.2 8.7 27.8 20.7 1.6-.4 3.3-.6 5-.6 9.4 0 17 7.6 17 17 0 1.2-.1 2.3-.4 3.4 1.4.3 2.6.9 3.6 1.7 1.2-3.1 1.8-6.4 1.8-9.9 0-10.7-6.9-19.8-16.5-23.1-.9.8-2 1.4-3.5 1.4z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "OWASP Top 10",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#E11D48" strokeWidth="2">
+          <rect width="18" height="18" x="3" y="3" rx="2"/>
+          <path d="m9 9 6 6m0-6-6 6"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Zod Schema",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="#3068B7">
+          <path d="M19.5 3h-15C3.1 3 2 4.1 2 5.5v13C2 19.9 3.1 21 4.5 21h15c1.4 0 2.5-1.1 2.5-2.5v-13C22 4.1 20.9 3 19.5 3zm-4.7 12.8h-5.6l4.6-6.3V8.2H7.2v1.8h5.5l-4.6 6.3v1.3h6.7v-1.8z"/>
+        </svg>
+      ),
+    },
+  ],
+  ai: [
+    {
+      name: "OpenAI / LLMs",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="#10A37F">
+          <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Vector Search",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" strokeWidth="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.3-4.3"/>
+          <path d="M11 8v6M8 11h6"/>
+        </svg>
+      ),
+    },
+    {
+      name: "Autonomous Agents",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" strokeWidth="2">
+          <rect width="18" height="12" x="3" y="6" rx="2"/>
+          <circle cx="9" cy="12" r="1"/>
+          <circle cx="15" cy="12" r="1"/>
+          <path d="M12 2v4"/>
+        </svg>
+      ),
+    },
+  ],
+  cloud: [
+    {
+      name: "Vercel Edge",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 116 100" fill="#000">
+          <polygon points="58 0 116 100 0 100" />
+        </svg>
+      ),
+    },
+    {
+      name: "Docker",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="#2496ED">
+          <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.186.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.186.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.186.186.186m5.893 2.715h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186H8.1a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.185-.186H5.136a.186.186 0 00-.186.185v1.888c0 .102.084.185.186.185m-2.928 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.185-.186H2.208a.186.186 0 00-.186.185v1.888c0 .102.084.185.186.185M23.792 11.45c-.326-.78-1.077-1.306-1.92-1.353-.133-.008-.266.002-.397.03-.314-.727-.92-1.31-1.685-1.62-.257-.104-.53-.16-.807-.168-.135-.004-.27.004-.403.024a4.965 4.965 0 00-2.316-.575H.186A.186.186 0 000 7.973v4.618C0 17.784 4.54 21.9 10.134 21.9c6.435 0 11.758-5.32 12.046-11.777.625.26 1.344.204 1.916-.153.642-.4.86-1.19.696-1.52"/>
+        </svg>
+      ),
+    },
+    {
+      name: "GitHub Actions",
+      svg: (
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="#2088FF">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      ),
+    },
+  ],
+};
 
 export default function TechStack() {
   const { t } = useLanguage();
+  const [activeTab, setActiveTab] = useState<Category>("frameworks");
+
+  const categories: { key: Category; label: string }[] = [
+    { key: "frameworks", label: "Development Frameworks" },
+    { key: "databases", label: "Databases & Storage" },
+    { key: "security", label: "Security & AppSec" },
+    { key: "ai", label: "Artificial Intelligence" },
+    { key: "cloud", label: "Cloud & DevOps" },
+  ];
 
   return (
-    <section id="stack" className="relative py-28 sm:py-36 px-6 sm:px-8 w-full max-w-7xl mx-auto z-10">
+    <section id="stack" className="relative py-28 sm:py-36 px-6 sm:px-10 w-full max-w-7xl mx-auto z-10">
+      
+      {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-3">
-          {t.stack.badge}
-        </span>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        <h2 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
           {t.stack.title}
         </h2>
-        <p className="mt-4 text-sm sm:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
+        <p className="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
           {t.stack.description}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {stackItems.map((item, idx) => {
-          const Icon = item.icon;
-          return (
+      {/* Tabs */}
+      <div className="flex flex-wrap items-center justify-center gap-3.5 mb-16">
+        {categories.map((cat) => (
+          <button
+            key={cat.key}
+            onClick={() => setActiveTab(cat.key)}
+            className={`px-6 py-3.5 rounded-full text-sm sm:text-base font-bold transition-all duration-200 cursor-pointer ${
+              activeTab === cat.key
+                ? "bg-white text-black shadow-[0_4px_20px_rgba(255,255,255,0.3)]"
+                : "border border-slate-700 text-slate-300 hover:text-white hover:border-slate-500 bg-slate-900/50"
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Grid de Pastillas Blancas con Logo a Color (Estilo Lyncros) */}
+      <div className="bg-[#090e1a]/80 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stackData[activeTab].map((item, idx) => (
             <div
               key={idx}
-              className="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-cyan-400/50 transition-all group"
+              className="bg-white hover:bg-slate-50 text-slate-900 rounded-2xl p-5 sm:p-6 flex items-center justify-center gap-4 shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-1 cursor-default"
             >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400 group-hover:scale-105 transition-transform">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <span className="text-[10px] font-mono text-cyan-400/90 uppercase tracking-wider bg-cyan-950/60 px-2.5 py-1 rounded-md border border-cyan-500/20">
-                    {item.category}
-                  </span>
-                </div>
-                <h3 className="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
-                  {item.name}
-                </h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  {item.desc}
-                </p>
+              <div className="shrink-0 flex items-center justify-center">
+                {item.svg}
               </div>
+              <span className="font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight">
+                {item.name}
+              </span>
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
+
     </section>
   );
 }
