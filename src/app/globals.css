@@ -8,6 +8,15 @@
   --color-cyber-blue: #2563EB;
   --color-cyber-dark: #06090f;
   --color-cyber-card: #0B111E;
+
+  /* Breakpoints Corporativos Personalizados */
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1920px;
 }
 
 :root {
@@ -15,27 +24,56 @@
   --foreground: #f1f5f9;
 }
 
+/* Prevención estricta de Scroll Horizontal y Reseteo Accesible */
 html {
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  width: 100%;
 }
 
 body {
   color: var(--foreground);
   background-color: var(--background);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
+  min-height: 100vh;
+  /* Safe Area Insets para dispositivos con notch (iPhone / iPads / Androids) */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
+/* Clases de Tipografía Fluida (clamp: min, preferred, max) */
+.text-fluid-hero {
+  font-size: clamp(2.25rem, 5vw + 1rem, 5.5rem);
+  line-height: 1.06;
+}
+
+.text-fluid-h2 {
+  font-size: clamp(1.85rem, 3.5vw + 0.8rem, 3.75rem);
+  line-height: 1.15;
+}
+
+.text-fluid-h3 {
+  font-size: clamp(1.35rem, 2vw + 0.6rem, 2.25rem);
+  line-height: 1.25;
+}
+
+.text-fluid-body {
+  font-size: clamp(1rem, 0.5vw + 0.875rem, 1.25rem);
+  line-height: 1.6;
+}
+
+/* Tarjetas con Glassmorphism Aislado */
 .glass-card {
-  background: rgba(11, 17, 30, 0.65);
+  background: rgba(11, 17, 30, 0.7);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: border-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+  transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
 }
 
 .glass-card:hover {
@@ -43,6 +81,18 @@ body {
   box-shadow: 0 12px 35px -10px rgba(0, 240, 255, 0.12);
 }
 
+/* Offset de scroll para que el navbar nunca tape los títulos */
 section {
-  scroll-margin-top: 6rem;
+  scroll-margin-top: clamp(5rem, 8vw, 7rem);
+}
+
+/* Touch Targets Accesibles para Dispositivos Táctiles (Mínimo 44x44px) */
+@media (pointer: coarse) {
+  button, 
+  a, 
+  select, 
+  input[type="checkbox"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }

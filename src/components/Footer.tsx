@@ -10,16 +10,16 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="w-full bg-[#04060c] border-t border-slate-800 pt-24 pb-16 text-slate-300 font-sans mt-32">
-      <div className="w-full px-8 sm:px-14 lg:px-20">
+    <footer className="w-full bg-[#04060c] border-t border-slate-800 pt-16 sm:pt-24 pb-12 sm:pb-16 text-slate-300 font-sans mt-24 sm:mt-32 overflow-hidden">
+      <div className="w-full px-4 sm:px-8 lg:px-14 xl:px-20">
         
         {/* Top Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 pb-16 border-b border-slate-800">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 sm:gap-10 pb-12 sm:pb-16 border-b border-slate-800">
           
-          {/* Col 1: Brand & Redes Sociales Minimalistas */}
-          <div className="col-span-2 space-y-6">
-            <Link href="/" className="flex items-center gap-4 group">
-              <div className="relative flex items-center justify-center w-14 h-14 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-cyan-400 transition-all p-2 shadow-lg">
+          {/* Brand & Redes */}
+          <div className="sm:col-span-2 space-y-5 sm:space-y-6">
+            <Link href="/" className="flex items-center gap-3 sm:gap-4 group">
+              <div className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-900/90 border border-slate-800 group-hover:border-cyan-400 transition-all p-2 shadow-lg">
                 <Image
                   src="/logo.png"
                   alt="Plexus Code Logo"
@@ -28,22 +28,20 @@ export default function Footer() {
                   className="object-contain w-full h-full"
                 />
               </div>
-              <span className="font-extrabold tracking-tight text-white text-3xl">
+              <span className="font-extrabold tracking-tight text-white text-2xl sm:text-3xl">
                 PLEXUS<span className="text-cyan-400">CODE</span>
               </span>
             </Link>
-            <p className="text-slate-400 text-lg leading-relaxed max-w-sm">
+            <p className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-sm">
               AI-Powered Software Engineering & Defensive Cybersecurity Architectures. Secure by design. Scalable by default.
             </p>
 
-            {/* Iconos Redes Sociales Estilo Teltonika (Monocromático -> Hover Cyan/Azul) */}
-            <div className="flex items-center gap-5 pt-2">
-              {/* LinkedIn */}
+            <div className="flex items-center gap-4 pt-1">
               <a
                 href="https://www.linkedin.com/company/136934237/admin/dashboard/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-white hover:text-cyan-400 transition-all duration-200 transform hover:scale-110"
+                className="text-white hover:text-cyan-400 transition-all duration-200 transform hover:scale-110 min-w-[44px] min-h-[44px] flex items-center justify-center"
                 aria-label="LinkedIn"
               >
                 <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
@@ -51,12 +49,11 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* Instagram */}
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noreferrer"
-                className="text-white hover:text-cyan-400 transition-all duration-200 transform hover:scale-110"
+                className="text-white hover:text-cyan-400 transition-all duration-200 transform hover:scale-110 min-w-[44px] min-h-[44px] flex items-center justify-center"
                 aria-label="Instagram"
               >
                 <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
@@ -64,23 +61,9 @@ export default function Footer() {
                 </svg>
               </a>
 
-              {/* X / Twitter */}
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white hover:text-cyan-400 transition-all duration-200 transform hover:scale-110"
-                aria-label="X"
-              >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-
-              {/* Mail */}
               <a
                 href="mailto:contact@plexuscode.com"
-                className="text-white hover:text-cyan-400 transition-all duration-200 transform hover:scale-110"
+                className="text-white hover:text-cyan-400 transition-all duration-200 transform hover:scale-110 min-w-[44px] min-h-[44px] flex items-center justify-center"
                 aria-label="Email"
               >
                 <Mail className="w-6 h-6" />
@@ -88,60 +71,61 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 2: Soluciones */}
-          <div className="space-y-4">
-            <h4 className="text-white text-lg font-bold uppercase tracking-wider">
+          {/* Soluciones */}
+          <div className="space-y-3 sm:space-y-4">
+            <h4 className="text-white text-base font-bold uppercase tracking-wider">
               Soluciones
             </h4>
-            <ul className="space-y-3.5 text-base">
+            <ul className="space-y-2.5 text-sm sm:text-base">
               <li><Link href="#services" className="hover:text-cyan-400 transition-colors">Custom Web SaaS</Link></li>
-              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">Agentes Autónomos IA</Link></li>
-              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">AppSec & Auditorías</Link></li>
+              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">Agentes Autónomos</Link></li>
+              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">AppSec Hardening</Link></li>
               <li><Link href="#services" className="hover:text-cyan-400 transition-colors">Pipelines de Pagos</Link></li>
             </ul>
           </div>
 
-          {/* Col 3: Tecnologías */}
-          <div className="space-y-4">
-            <h4 className="text-white text-lg font-bold uppercase tracking-wider">
+          {/* Tecnologías */}
+          <div className="space-y-3 sm:space-y-4">
+            <h4 className="text-white text-base font-bold uppercase tracking-wider">
               Tecnologías
             </h4>
-            <ul className="space-y-3.5 text-base">
+            <ul className="space-y-2.5 text-sm sm:text-base">
               <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">Next.js 15 & React</Link></li>
               <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">TypeScript & Zod</Link></li>
-              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">Supabase & Postgres</Link></li>
-              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">Zero-Trust Policies</Link></li>
+              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">Supabase Postgres</Link></li>
+              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">Zero-Trust Security</Link></li>
             </ul>
           </div>
 
-          {/* Col 4: Firma */}
-          <div className="space-y-4">
-            <h4 className="text-white text-lg font-bold uppercase tracking-wider">
+          {/* Firma */}
+          <div className="space-y-3 sm:space-y-4">
+            <h4 className="text-white text-base font-bold uppercase tracking-wider">
               Firma
             </h4>
-            <ul className="space-y-3.5 text-base">
+            <ul className="space-y-2.5 text-sm sm:text-base">
               <li><Link href="#services" className="hover:text-cyan-400 transition-colors">Sobre Nosotros</Link></li>
               <li><Link href="#contact" className="hover:text-cyan-400 transition-colors">Contacto</Link></li>
               <li><a href="mailto:contact@plexuscode.com" className="hover:text-cyan-400 transition-colors">contact@plexuscode.com</a></li>
             </ul>
           </div>
 
-          {/* Col 5: Updates */}
-          <div className="col-span-2 md:col-span-1 space-y-4">
-            <h4 className="text-white text-lg font-bold uppercase tracking-wider">
+          {/* Newsletter */}
+          <div className="sm:col-span-2 md:col-span-3 lg:col-span-2 space-y-3 sm:space-y-4">
+            <h4 className="text-white text-base font-bold uppercase tracking-wider">
               Tech Updates
             </h4>
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
               Recibe análisis sobre AppSec y arquitecturas de IA.
             </p>
             <div className="flex items-center gap-2">
               <input
                 type="email"
                 placeholder="tu@empresa.com"
-                className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-colors"
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-colors min-h-[44px]"
               />
               <button
-                className="p-3.5 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-xl transition-colors shrink-0"
+                type="button"
+                className="p-3.5 bg-cyan-400 hover:bg-cyan-300 text-black font-bold rounded-xl transition-colors shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
                 aria-label="Suscribir"
               >
                 <Send className="w-5 h-5" />
@@ -152,11 +136,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-12 flex flex-col sm:flex-row items-center justify-between text-base text-slate-500 gap-6">
+        <div className="pt-8 sm:pt-12 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-slate-500 gap-4 text-center sm:text-left">
           <div>
             COPYRIGHT © PLEXUS CODE, 2026. ALL RIGHTS RESERVED.
           </div>
-          <div className="flex items-center gap-8 text-base font-semibold">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-semibold">
             <Link href="#contact" className="hover:text-slate-300 transition-colors">PRIVACIDAD</Link>
             <span className="text-slate-800">|</span>
             <Link href="#contact" className="hover:text-slate-300 transition-colors">TÉRMINOS</Link>
