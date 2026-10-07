@@ -74,48 +74,48 @@ export default function Footer() {
           {/* Soluciones */}
           <div className="space-y-3 sm:space-y-4">
             <h4 className="text-white text-base font-bold uppercase tracking-wider">
-              Soluciones
+              {t.footer.solutionsHeading}
             </h4>
             <ul className="space-y-2.5 text-sm sm:text-base">
-              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">Custom Web SaaS</Link></li>
-              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">Agentes Autónomos</Link></li>
-              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">AppSec Hardening</Link></li>
-              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">Pipelines de Pagos</Link></li>
+              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">{t.footer.solution1}</Link></li>
+              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">{t.footer.solution2}</Link></li>
+              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">{t.footer.solution3}</Link></li>
+              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">{t.footer.solution4}</Link></li>
             </ul>
           </div>
 
           {/* Tecnologías */}
           <div className="space-y-3 sm:space-y-4">
             <h4 className="text-white text-base font-bold uppercase tracking-wider">
-              Tecnologías
+              {t.footer.technologiesHeading}
             </h4>
             <ul className="space-y-2.5 text-sm sm:text-base">
-              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">Next.js 15 & React</Link></li>
-              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">TypeScript & Zod</Link></li>
-              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">Supabase Postgres</Link></li>
-              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">Zero-Trust Security</Link></li>
+              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">{t.footer.tech1}</Link></li>
+              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">{t.footer.tech2}</Link></li>
+              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">{t.footer.tech3}</Link></li>
+              <li><Link href="#stack" className="hover:text-cyan-400 transition-colors">{t.footer.tech4}</Link></li>
             </ul>
           </div>
 
           {/* Firma */}
           <div className="space-y-3 sm:space-y-4">
             <h4 className="text-white text-base font-bold uppercase tracking-wider">
-              Firma
+              {t.footer.signatureHeading}
             </h4>
             <ul className="space-y-2.5 text-sm sm:text-base">
-              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">Sobre Nosotros</Link></li>
-              <li><Link href="#contact" className="hover:text-cyan-400 transition-colors">Contacto</Link></li>
-              <li><a href="mailto:contact@plexuscode.com" className="hover:text-cyan-400 transition-colors">contact@plexuscode.com</a></li>
+              <li><Link href="#services" className="hover:text-cyan-400 transition-colors">{t.footer.signature1}</Link></li>
+              <li><Link href="#contact" className="hover:text-cyan-400 transition-colors">{t.footer.signature2}</Link></li>
+              <li><a href="mailto:contact@plexuscode.com" className="hover:text-cyan-400 transition-colors">{t.footer.signature3}</a></li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div className="sm:col-span-2 md:col-span-3 lg:col-span-2 space-y-3 sm:space-y-4">
             <h4 className="text-white text-base font-bold uppercase tracking-wider">
-              Tech Updates
+              {t.footer.newsletterHeading}
             </h4>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Recibe análisis sobre AppSec y arquitecturas de IA.
+              {t.footer.newsletterDescription}
             </p>
             <div className="flex items-center gap-2">
               <input
@@ -137,15 +137,15 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 sm:pt-12 flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-slate-500 gap-4 text-center sm:text-left">
-          <div>
-            COPYRIGHT © PLEXUS CODE, 2026. ALL RIGHTS RESERVED.
-          </div>
+<div>
+             {t.footer.copyright}
+           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-semibold">
-            <Link href="#contact" className="hover:text-slate-300 transition-colors">PRIVACIDAD</Link>
-            <span className="text-slate-800">|</span>
-            <Link href="#contact" className="hover:text-slate-300 transition-colors">TÉRMINOS</Link>
-            <span className="text-slate-800">|</span>
-            <Link href="#contact" className="hover:text-slate-300 transition-colors">POLÍTICAS ZERO TRUST</Link>
+<Link href="#contact" className="hover:text-slate-300 transition-colors">{t.footer.privacy}</Link>
+             <span className="text-slate-800">|</span>
+             <Link href="#contact" className="hover:text-slate-300 transition-colors">{t.footer.terms}</Link>
+             <span className="text-slate-800">|</span>
+             <Link href="#contact" className="hover:text-slate-300 transition-colors">{t.footer.zeroTrustPolicies}</Link>
           </div>
         </div>
 

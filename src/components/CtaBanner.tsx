@@ -16,15 +16,15 @@ export default function CtaBanner() {
         <div className="relative z-10 max-w-3xl mx-auto space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/50 text-cyan-300 text-xs font-mono">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Escala tu Producto Hoy</span>
+            <span>{t.cta.badge}</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight">
-            ¿Listo para construir software seguro y escalable?
+            {t.cta.title}
           </h2>
 
           <p className="text-base sm:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-            Cuéntanos sobre tu visión y diseñemos juntos una plataforma robusta preparada para el futuro.
+            {t.cta.description}
           </p>
 
           <div className="pt-4 flex justify-center">
@@ -32,7 +32,7 @@ export default function CtaBanner() {
               href="#contact"
               className="inline-flex items-center gap-3 px-10 py-5 text-base sm:text-lg font-bold text-black bg-cyan-400 hover:bg-cyan-300 rounded-2xl transition-all duration-200 shadow-[0_0_35px_rgba(0,240,255,0.5)] hover:shadow-[0_0_50px_rgba(0,240,255,0.75)] transform hover:-translate-y-0.5"
             >
-              Comenzar Ahora
+              {t.cta.button}
               <ArrowRight className="w-5 h-5" />
             </a>
           </div>

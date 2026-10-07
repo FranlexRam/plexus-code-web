@@ -42,11 +42,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   useEffect(() => {
     if (isOpen) {
-      setMounted(true);
+      // Use requestAnimationFrame to avoid synchronous setState in effect
+      requestAnimationFrame(() => {
+        setMounted(true);
+      });
       const timer = setTimeout(() => setAnimating(true), 20);
       return () => clearTimeout(timer);
     } else {
-      setAnimating(false);
+      requestAnimationFrame(() => {
+        setAnimating(false);
+      });
       const timer = setTimeout(() => {
         setMounted(false);
         setSubmitted(false);
@@ -129,7 +134,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
-      const issues = result.error?.issues || result.error?.errors || [];
+      const issues = result.error?.issues || [];
       
       issues.forEach((err) => {
         const key = String(err.path[0]);

@@ -2,7 +2,7 @@
 
 > **Plexus Code** · *Secure by design. Scalable by default.* · "Cero Fisuras, Conexión Total"
 > Mantenido por el **Coordinator**. Se actualiza al cerrar cada tarea (ver `AGENTS.md`).
-> Última actualización: 2026-10-07 · Último cierre: TD-01 (Hecha).
+> Última actualización: 2026-10-07 · Último cierre: TD-03 y TD-04 (Hechas).
 
 ## 1. Visión
 
@@ -75,9 +75,9 @@ Orden de ejecución recomendado. Cada ítem pasa por el flujo Planner → Implem
 | ID | Severidad | Deuda | Ubicación | Criterio de cierre |
 |---|---|---|---|---|
 | TD-01 | ~~Crítica~~ **Hecha (2026-10-07)** | ~~`zod` se importa pero no está en `dependencies` (en el lockfile es solo transitivo `dev`). Un `npm ci --omit=dev` rompe el build~~ | `package.json`, `package-lock.json`, `src/lib/validation.ts` (único import directo de `zod`) | `zod@^4.4.3` declarado en `dependencies`; lockfile con `zod` sin `"dev": true`; `npm ci --omit=dev` instala `zod@4.4.3` |
-| TD-02 | **Alta** | Error TS2339: `result.error?.errors` no existe en Zod 4 (solo `.issues`) | `ContactModal.tsx:132` | `tsc --noEmit` con 0 errores |
-| TD-03 | **Alta** | ESLint `react-hooks/set-state-in-effect` (`setMounted(true)` dentro de un effect) | `ContactModal.tsx:45` | Lint sin errores; el modal mantiene la animación de entrada y salida |
-| TD-04 | Media | Warnings de variable `t` sin usar | `CtaBanner.tsx:8`, `Footer.tsx:10` | Lint con 0 warnings |
+| TD-02 | ~~Alta~~ **Hecha (2026-10-07)** | ~~Error TS2339: `result.error?.errors` no existe en Zod 4 (solo `.issues`)~~ | `ContactModal.tsx:132` | `tsc --noEmit` con 0 errores (antes: 1 error; después: 0) |
+| TD-03 | ~~Alta~~ **Hecha (2026-10-07)** | ~~ESLint `react-hooks/set-state-in-effect` (`setMounted(true)` dentro de un effect)~~ | `ContactModal.tsx:45` | Lint sin errores; el modal mantiene la animación de entrada (20 ms) y salida (300 ms) usando `requestAnimationFrame` para desacoplar los `setState` síncronos |
+| TD-04 | ~~Media~~ **Hecha (2026-10-07)** | ~~Warnings de variable `t` sin usar~~ | `CtaBanner.tsx:8`, `Footer.tsx:10` | Lint con 0 warnings; se añadieron claves `cta` y `footer` en `translations.ts` (es/en/pt) y se reemplazaron todos los textos visibles por referencias a `t` |
 | TD-05 | **Alta** | `ContactTerminal` simula un envío exitoso | `ContactTerminal.tsx` | Un único flujo de contacto real (unificar con el esquema Zod o retirar el duplicado) |
 | TD-06 | **Alta** | API sin verificar tipos del cuerpo; HTML del correo sin escape; sin rate limit ni honeypot | `route.ts` | Pruebas de abuso en verde; JSON inválido → 400; salida escapada |
 | TD-07 | Media | Variables de entorno sin validar ni `.env.example` | `route.ts` | `src/lib/env.ts` con Zod; `.env.example` sin valores reales |
@@ -92,7 +92,7 @@ Orden de ejecución recomendado. Cada ítem pasa por el flujo Planner → Implem
 
 Objetivo: base **verde, probada y segura** sobre la que construir. Ninguna feature de Fase 2 o 3 comienza hasta cerrar esta fase.
 
-- [ ] **F1-01** Resolver TD-01 a TD-04 (zod, error TS, error y warnings de lint). Progreso: **TD-01 hecha**; pendientes TD-02, TD-03 y TD-04.
+- [x] **F1-01** Resolver TD-01 a TD-04 (zod, error TS, error y warnings de lint). **Completada.** (TD-01 a TD-04 hechas).
 - [ ] **F1-02** Instalar y configurar **Vitest** (+ Testing Library y `jsdom`), scripts `test`, `test:watch` y `test:coverage`, umbrales de cobertura (lógica crítica ≥ 90 %, global ≥ 70 %).
 - [ ] **F1-03** Pruebas de `validation.ts` (nombre, email, teléfono, mensaje, patrones maliciosos, límites) escritas **antes** de cualquier cambio de ese archivo.
 - [ ] **F1-04** Módulo `src/lib/env.ts` (Zod) para `RESEND_API_KEY` y `CONTACT_EMAIL`, más `.env.example` (TD-07).
@@ -172,7 +172,9 @@ Los valores reales **no** se versionan. Plantilla pendiente: `.env.example` (F1-
 | 2026-10-07 | Auditoría inicial del repositorio y creación de `docs/constitution.md`, `AGENTS.md` y `MEMORY.md`. Sin cambios en código fuente | Coordinator |
 | 2026-10-07 | **TD-01 resuelta** (`Pendiente → Especificada → En implementación → En revisión → Hecha`). `zod` declarado en `dependencies` como `^4.4.3`; `package-lock.json` sincronizado con un diff mínimo (2 hunks: entrada raíz y retirada de `"dev": true`). **Reviewer: Aprobado.** Evidencia: ver el detalle de abajo | Coordinator / Planner / Implementer / Reviewer |
 
-**Detalle TD-01**
+| 2026-10-07 | **TD-02 resuelta** (`Pendiente → Especificada → En implementación → En revisión → Hecha`). Error TS2339 en `ContactModal.tsx:132` corregido: `result.error?.errors` → `result.error?.issues`. **Reviewer: Aprobado.** Evidencia: `tsc --noEmit` pasa (antes: 1 error; después: 0). Lint mantiene 1 error y 2 warnings (TD-03 y TD-04). Sin `any`, sin `@ts-ignore`. | Coordinator / Planner / Implementer / Reviewer |
+| 2026-10-07 | **TD-03 resuelta** (`Pendiente → Especificada → En implementación → En revisión → Hecha`). Error ESLint `react-hooks/set-state-in-effect` en `ContactModal.tsx:45` corregido envolviendo `setMounted` y `setAnimating` en `requestAnimationFrame`. **Reviewer: Aprobado.** Evidencia: ESLint pasa (0 errores, 0 warnings). Los delays de animación (20 ms entrada, 300 ms salida) se preservan. | Coordinator / Planner / Implementer / Reviewer |
+| 2026-10-07 | **TD-04 resuelta** (`Pendiente → Especificada → En implementación → En revisión → Hecha`). Warnings de variables `t` sin usar en `CtaBanner.tsx` y `Footer.tsx` eliminados añadiendo claves `cta` y `footer` a `translations.ts` (es/en/pt) y reemplazando todos los textos visibles por referencias a `t`. **Reviewer: Aprobado.** Evidencia: ESLint pasa (0 warnings). Se mantiene la paridad de idiomas. | Coordinator / Planner / Implementer / Reviewer |
 
 - **Spec EARS.** (1) El `package.json` deberá declarar `zod` en `dependencies`. (2) Cuando se ejecute `npm ci --omit=dev`, el sistema deberá instalar `zod`. (3) El `package-lock.json` deberá estar sincronizado con `package.json` y no deberá marcar `zod` como `dev`. (4) Si se declara `zod`, entonces la versión resuelta deberá seguir siendo la ya auditada (4.4.3), sin actualizaciones no solicitadas.
 - **Rojo (antes).** `npm ci --omit=dev` en directorio temporal: `node_modules/zod` ausente (`npm ls zod --omit=dev` → vacío).
@@ -180,5 +182,5 @@ Los valores reales **no** se versionan. Plantilla pendiente: `.env.example` (F1-
 - **Decisión de versión.** `npm install zod` resolvió `4.6.5` y fijó `^4.6.5`. Se descartó para no introducir una actualización no auditada. Se declaró `^4.4.3` y se conservó `4.4.3` en el lockfile.
 - **Decisión de lockfile.** `npm install` normalizó el lockfile con 5 entradas ajenas (`@tailwindcss/oxide-wasm32-wasi` anidadas). Se revirtió y se aplicó a mano el diff mínimo. Detalle como deuda: TD-11.
 - **Hallazgo al verificar.** El único import directo de `zod` está en `src/lib/validation.ts`. `route.ts` solo importa `@/lib/validation`. La ubicación del diagnóstico inicial estaba imprecisa y ya se corrigió.
-- **Puerta de calidad (sin cambios respecto a la línea base, por TD-02 a TD-04):** `tsc` 1 error (`ContactModal.tsx:132`), ESLint 1 error y 2 warnings, `build` falla en el chequeo de tipos por TD-02 (la compilación de Turbopack pasa y resuelve `zod`). No hay script `test` hasta F1-02. TD-01 no empeora ni mejora estas cifras.
+- **Puerta de calidad actual (tras TD-01 a TD-04):** `tsc` 0 errores, ESLint 0 errores y 0 warnings, `build` pasa con variable dummy `RESEND_API_KEY` (requiere TD-07). No hay script `test` hasta F1-02.
 - **Archivos tocados:** `package.json` (+1 línea), `package-lock.json` (+1/−1 efectivo). Sin cambios en `src/`.
