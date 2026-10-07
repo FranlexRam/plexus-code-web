@@ -1,0 +1,171 @@
+# MEMORY.md: Estado del Proyecto y Roadmap Estratégico
+
+> **Plexus Code** · *Secure by design. Scalable by default.* · "Cero Fisuras, Conexión Total"
+> Mantenido por el **Coordinator**. Se actualiza al cerrar cada tarea (ver `AGENTS.md`).
+> Última actualización: 2026-10-07 · Fuente: auditoría inicial del repositorio.
+
+## 1. Visión
+
+Showcase interactivo de alta ingeniería, ultrarrápido y moderno, que demuestre excelencia técnica en desarrollo web, ciberseguridad defensiva, automatizaciones B2B y Sistemas Multiagente (MAS).
+
+**Core vertical a destacar:** proveedor de tecnología e integraciones **Meta** (agentes de IA para WhatsApp, Instagram y TikTok; reservas; CRM) y automatizaciones operativas SaaS (**OpsFlow AI**; agentes conversacionales para Fintech como **AON Pay**).
+
+## 2. Diagnóstico inicial (estado actual)
+
+### 2.1 Stack (versiones instaladas)
+
+| Área | Versión |
+|---|---|
+| Next.js (App Router) | 16.3.1 |
+| React / ReactDOM | 19.2.8 |
+| TypeScript | 5.9.3 (`strict: true`) |
+| Tailwind CSS | 4.3.3 (`@tailwindcss/postcss`, tokens en `@theme`) |
+| Zod | 4.4.3, **no declarado en `package.json`** |
+| Resend | 6.22.0 |
+| lucide-react / clsx / tailwind-merge | 1.31.0 / 2.1.1 / 3.6.0 |
+| framer-motion | 13.1.0, **sin uso en `src/`** |
+| ESLint | 9.39.5 + `eslint-config-next` 16.3.1 |
+| Node (local) | v25.6.1 (sin `engines` ni `.nvmrc`) |
+
+### 2.2 Arquitectura de componentes
+
+- **Una sola página** (`/`) con anclas `#services`, `#stack`, `#contact`.
+- `src/app/page.tsx` es un **Client Component completo** que envuelve todo en `LanguageProvider` y mantiene el estado `isContactOpen`.
+- `src/app/layout.tsx` es Server Component con `metadata` y `viewport`. `<html lang="es">` está fijo.
+- Componentes (`src/components/`): `Navbar`, `Hero`, `ServicesBento`, `TechStack` (269 líneas, SVGs inline), `CtaBanner`, `ContactTerminal`, `ContactModal` (471 líneas), `Footer`, `LanguageSelector`. Todos son `"use client"`.
+- **i18n:** `LanguageContext` (`es | en | pt`, por defecto `es`, sin persistencia) + `src/lib/translations.ts` (308 líneas).
+- **Estilos:** tema cyber en `globals.css` (tokens `cyber-*`, breakpoints personalizados `xs 400 / sm 576 / md 768 / lg 992 / xl 1200 / 2xl 1400 / 3xl 1920`, `.glass-card`, tipografía fluida). Se usan muchos hex sueltos pese a los tokens.
+- **Sin** `loading.tsx`, `error.tsx`, `not-found.tsx`, `robots`, `sitemap`, `proxy.ts`, `next/font`. `next.config.ts` está vacío (sin cabeceras de seguridad).
+
+### 2.3 Rutas API
+
+| Ruta | Método | Función | Observaciones |
+|---|---|---|---|
+| `/api/contact` | POST | Sanea → `contactSchema.safeParse` → envía por Resend a `CONTACT_EMAIL` (fallback `contact@plexuscode.com`) | Remitente sandbox `onboarding@resend.dev`; sin rate limit ni honeypot; HTML del correo con interpolación sin escape; `rawBody.email.trim()` sin verificar tipo (un cuerpo malformado da 500); `RESEND_API_KEY` sin validar; bug CSS `pt-4;` en la plantilla; correo solo en español |
+
+### 2.4 Contacto
+
+- `ContactModal`: flujo real (validación en vivo + Zod + POST a `/api/contact`). Sin focus trap. Strings hardcodeados (`"Cerrar modal"`, `"PROCESSING..."`, lista de países y topics sin traducir). Línea redundante `language === "en" ? t.modal : t.modal`.
+- `ContactTerminal`: **formulario inline que no envía nada** (solo `setSubmitted(true)`). Muestra un éxito falso y el lead se pierde.
+
+### 2.5 Calidad (medido el 2026-10-07)
+
+| Chequeo | Resultado |
+|---|---|
+| Tests | **Ninguno.** Sin runner, sin script `test`, sin CI, sin hooks |
+| `tsc --noEmit` | **1 error**: `ContactModal.tsx:132` |
+| ESLint | **1 error + 2 warnings** |
+| Prettier | No configurado |
+| `.env.example` | No existe |
+
+### 2.6 Contenido y marca (inconsistencias detectadas)
+
+- Footer indica "Next.js 15 & React"; la versión real es 16.
+- Enlace de LinkedIn apunta a `.../admin/dashboard/` (panel de administración).
+- Instagram apunta a `https://instagram.com` genérico.
+- "Privacidad", "Términos" y "Políticas Zero Trust" apuntan a `#contact`. "Sobre Nosotros" apunta a `#services`. No existen páginas legales.
+- Los servicios actuales son genéricos: **no reflejan aún el core vertical** (Agentes Meta/WhatsApp, MAS B2B, OpsFlow AI, AON Pay).
+- El Hero muestra métricas ("18ms (Edge)", "Activa & Blindada") sin respaldo medido. Revisar veracidad (constitución 5.5).
+- `public/` conserva SVGs de plantilla sin uso; `logo.png` pesa ~390 KB; el README es el de `create-next-app`.
+
+## 3. Deuda técnica inmediata
+
+Orden de ejecución recomendado. Cada ítem pasa por el flujo Planner → Implementer → Reviewer.
+
+| ID | Severidad | Deuda | Ubicación | Criterio de cierre |
+|---|---|---|---|---|
+| TD-01 | **Crítica** | `zod` se importa pero no está en `dependencies` (en el lockfile es solo transitivo `dev`). Un `npm ci --omit=dev` rompe el build | `package.json`, `src/lib/validation.ts`, `src/app/api/contact/route.ts` | `zod` declarado en `dependencies`; lockfile actualizado; build con `--omit=dev` OK |
+| TD-02 | **Alta** | Error TS2339: `result.error?.errors` no existe en Zod 4 (solo `.issues`) | `ContactModal.tsx:132` | `tsc --noEmit` con 0 errores |
+| TD-03 | **Alta** | ESLint `react-hooks/set-state-in-effect` (`setMounted(true)` dentro de un effect) | `ContactModal.tsx:45` | Lint sin errores; el modal mantiene la animación de entrada y salida |
+| TD-04 | Media | Warnings de variable `t` sin usar | `CtaBanner.tsx:8`, `Footer.tsx:10` | Lint con 0 warnings |
+| TD-05 | **Alta** | `ContactTerminal` simula un envío exitoso | `ContactTerminal.tsx` | Un único flujo de contacto real (unificar con el esquema Zod o retirar el duplicado) |
+| TD-06 | **Alta** | API sin verificar tipos del cuerpo; HTML del correo sin escape; sin rate limit ni honeypot | `route.ts` | Pruebas de abuso en verde; JSON inválido → 400; salida escapada |
+| TD-07 | Media | Variables de entorno sin validar ni `.env.example` | `route.ts` | `src/lib/env.ts` con Zod; `.env.example` sin valores reales |
+| TD-08 | Media | `framer-motion` y `cn()` sin uso; SVGs de plantilla en `public/` | `package.json`, `public/` | Eliminar lo muerto o usarlo con propósito (decidir en Fase 3) |
+| TD-09 | Media | Strings hardcodeados y `<html lang>` fijo | `ContactModal`, `ContactTerminal`, `Footer`, `layout.tsx` | Todo texto vía `translations.ts`; `lang` dinámico |
+| TD-10 | Baja | README de plantilla; sin `engines`/`.nvmrc`; sin CI | raíz | README propio; `engines` definido; workflow de CI con la puerta de calidad |
+
+## 4. Backlog estratégico priorizado
+
+### Fase 1: Cimientos (deuda técnica, pruebas y tipado estricto)
+
+Objetivo: base **verde, probada y segura** sobre la que construir. Ninguna feature de Fase 2 o 3 comienza hasta cerrar esta fase.
+
+- [ ] **F1-01** Resolver TD-01 a TD-04 (zod, error TS, error y warnings de lint).
+- [ ] **F1-02** Instalar y configurar **Vitest** (+ Testing Library y `jsdom`), scripts `test`, `test:watch` y `test:coverage`, umbrales de cobertura (lógica crítica ≥ 90 %, global ≥ 70 %).
+- [ ] **F1-03** Pruebas de `validation.ts` (nombre, email, teléfono, mensaje, patrones maliciosos, límites) escritas **antes** de cualquier cambio de ese archivo.
+- [ ] **F1-04** Módulo `src/lib/env.ts` (Zod) para `RESEND_API_KEY` y `CONTACT_EMAIL`, más `.env.example` (TD-07).
+- [ ] **F1-05** Endurecer `/api/contact` con TDD (TD-06): verificación de tipos, 400 en JSON inválido, escape HTML, rate limit, honeypot, errores genéricos y plantilla de correo corregida. Pruebas del handler con Resend mockeado.
+- [ ] **F1-06** Resolver el contacto duplicado (TD-05) y consolidar un único esquema compartido.
+- [ ] **F1-07** Prueba de **paridad de claves** es/en/pt en `translations.ts` y tipado explícito del diccionario.
+- [ ] **F1-08** Configurar cabeceras de seguridad en `next.config.ts` (CSP, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, HSTS).
+- [ ] **F1-09** `engines`/`.nvmrc`, README propio y workflow de CI (`tsc`, `lint`, `test`, `build`, `npm audit`) (TD-10).
+- [ ] **F1-10** Limpieza de código muerto (TD-08) tras decidir el destino de `framer-motion`.
+
+**Criterio de salida de la Fase 1:** `tsc`, `lint`, `test` y `build` en verde sin warnings; cobertura sobre umbral; CI activo.
+
+### Fase 2: Contenido y Posicionamiento Core
+
+Objetivo: que el sitio comunique con precisión **qué vende Plexus Code**. Todo dato público debe estar confirmado por el propietario (ver preguntas abiertas).
+
+- [ ] **F2-01** **Servicio estrella: Agentes de IA sobre Meta**: WhatsApp (Business), Instagram y TikTok; reservas; integración con CRM. Casos de uso y flujo técnico.
+- [ ] **F2-02** **Soluciones MAS B2B**: orquestación de Sistemas Multiagente, automatizaciones operativas y trazabilidad.
+- [ ] **F2-03** **AppSec Defensiva**: seguridad desde la primera línea ("Cero Fisuras"), modelado de amenazas, hardening y revisión de código.
+- [ ] **F2-04** **Automatización de Procesos**: SaaS operativos; ficha de **OpsFlow AI**.
+- [ ] **F2-05** **Fintech**: ficha de **AON Pay** (agentes conversacionales). Requiere confirmar qué se puede publicar.
+- [ ] **F2-06** Reescritura profesional del copy en **es / en / pt** (Hero, servicios, CTA, TechStack) con paridad total y sin métricas sin respaldo.
+- [ ] **F2-07** Corregir enlaces oficiales: LinkedIn público de la empresa, Instagram oficial, TikTok, y verificar el correo `contact@plexuscode.com`. Quitar el enlace de administración.
+- [ ] **F2-08** Corregir el Footer (versión de Next.js, enlaces rotos) y crear páginas reales de **Privacidad** y **Términos**.
+- [ ] **F2-09** SEO técnico: `metadata` por idioma, Open Graph, `robots`, `sitemap`, datos estructurados `Organization`, y `<html lang>` dinámico.
+- [ ] **F2-10** Dominio verificado en Resend y cambio del remitente de producción.
+
+**Criterio de salida de la Fase 2:** servicios y copy aprobados por el propietario; cero enlaces genéricos o rotos; paridad de idiomas verificada por prueba.
+
+### Fase 3: Showcase Interactivo y UX
+
+Objetivo: demostrar ingeniería con la propia experiencia, sin sacrificar rendimiento.
+
+- [ ] **F3-01** Rediseño visual moderno ingeniería/ciberseguridad: jerarquía, tipografía con `next/font`, tokens consistentes, eliminar hex sueltos.
+- [ ] **F3-02** **Microinteracciones técnicas** de alto impacto (terminal, flujos de agentes, grafo MAS, demo conversacional simulada de WhatsApp) con carga diferida y `prefers-reduced-motion`.
+- [ ] **F3-03** Convertir `page.tsx` en Server Component y aislar las hojas interactivas para reducir el JS del cliente.
+- [ ] **F3-04** Pulido de conversión del formulario de contacto: estados de carga/éxito/error, focus trap y restauración de foco, selección de interés (Meta, MAS, AppSec), mensajes traducidos, analítica de conversión respetuosa con la privacidad.
+- [ ] **F3-05** Optimizar `logo.png` y las imágenes; objetivos CWV: LCP ≤ 2,0 s, INP ≤ 200 ms, CLS ≤ 0,05; Lighthouse ≥ 95.
+- [ ] **F3-06** Auditoría de accesibilidad WCAG 2.2 AA y pruebas visuales/E2E (Playwright) de los flujos críticos.
+- [ ] **F3-07** Persistencia del idioma y detección inicial.
+
+**Criterio de salida de la Fase 3:** objetivos de CWV y Lighthouse cumplidos en producción; E2E del contacto en verde; revisión visual y de accesibilidad aprobada.
+
+## 5. Decisiones vigentes
+
+| Fecha | Decisión | Motivo |
+|---|---|---|
+| 2026-10-07 | Adoptar la tríada `docs/constitution.md` + `AGENTS.md` + `MEMORY.md` como gobierno del repo | Alinear a humanos y agentes con la filosofía "Cero Fisuras, Conexión Total" |
+| 2026-10-07 | Documentos en español; `MEMORY.md` en la raíz | Preferencia del propietario |
+| 2026-10-07 | TDD con **Vitest** como runner único de pruebas unitarias e integración | Alta afinidad con TypeScript/ESM; arranque rápido |
+| 2026-10-07 | Mantener intacto el bloque `nextjs-agent-rules` en `AGENTS.md` | Lo regenera `next dev`; evitar cambios fantasma en el diff |
+| Previas | App Router, Tailwind 4 con `@theme`, i18n por Context, Resend para leads | Estado heredado del repositorio |
+
+## 6. Preguntas abiertas (requieren al propietario)
+
+1. ¿Cuáles son las URLs **oficiales** de LinkedIn (página pública), Instagram y TikTok?
+2. ¿Qué se puede publicar de **OpsFlow AI** y **AON Pay** (descripción, capturas, logos, métricas, nombres de clientes)?
+3. ¿Las métricas del Hero ("18ms Edge", "Zero-Trust activa") tienen respaldo medible o se sustituyen?
+4. ¿Existe el dominio `plexuscode.com` para verificar en Resend, y es `contact@plexuscode.com` el buzón real?
+5. ¿Cuál es el hosting de producción (Vercel u otro)? Condiciona el rate limiting y las cabeceras.
+6. ¿Hay textos legales (Privacidad y Términos) redactados o se redactan desde cero?
+7. ¿Se conserva `framer-motion` para la Fase 3 o se retira?
+
+## 7. Variables de entorno
+
+| Variable | Obligatoria | Uso |
+|---|---|---|
+| `RESEND_API_KEY` | Sí | Autenticación con Resend (solo servidor) |
+| `CONTACT_EMAIL` | No (fallback `contact@plexuscode.com`) | Destinatario de los leads |
+
+Los valores reales **no** se versionan. Plantilla pendiente: `.env.example` (F1-04).
+
+## 8. Registro de cambios
+
+| Fecha | Cambio | Responsable |
+|---|---|---|
+| 2026-10-07 | Auditoría inicial del repositorio y creación de `docs/constitution.md`, `AGENTS.md` y `MEMORY.md`. Sin cambios en código fuente | Coordinator |
