@@ -152,7 +152,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(sanitized),
+        body: JSON.stringify({ ...sanitized, honeypot: "" }),
       });
 
       if (response.ok) {
@@ -455,6 +455,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   {errors.server}
                 </div>
               )}
+
+              {/* Honeypot field */}
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="sr-only"
+                defaultValue=""
+              />
 
               {/* Botón de Envío */}
               <div className="pt-2">

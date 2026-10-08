@@ -8,7 +8,11 @@ export function sanitizeInput(str: string): string {
     .replace(/on\w+='[^']*'/gi, "")
     .replace(/on\w+=\w+/gi, "")
     .replace(/javascript:/gi, "")
-    .replace(/[<>]/g, "");
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 export const NAME_REGEX = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s'-]{2,60}$/;

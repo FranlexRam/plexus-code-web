@@ -47,7 +47,7 @@ export default function ContactTerminal() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(validation.data),
+        body: JSON.stringify({ ...validation.data, honeypot: "" }),
       });
 
       if (!response.ok) {
@@ -185,6 +185,17 @@ export default function ContactTerminal() {
                     className="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3 text-xs text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-400 transition-colors resize-none disabled:opacity-60 disabled:cursor-not-allowed"
                   />
                 </div>
+
+                {/* Honeypot field */}
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="sr-only"
+                  defaultValue=""
+                />
 
                 {isError && errorMessage && (
                   <div className="text-amber-400 text-xs font-mono bg-amber-950/30 border border-amber-800 rounded-xl px-4 py-3">

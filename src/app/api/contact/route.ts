@@ -3,16 +3,42 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { contactSchema, sanitizeInput } from "@/lib/validation";
 import { env } from "@/lib/env";
+import { rateLimit } from "@/lib/rate-limit";
 
 const resend = new Resend(env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
+    // 1. Rate limiting
+    const limit = rateLimit(req);
+    if (!limit.allowed) {
+      return NextResponse.json(
+        { success: false, error: "Too many requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": "60",
+            "RateLimit-Limit": "5",
+            "RateLimit-Remaining": limit.remaining.toString(),
+            "RateLimit-Reset": Math.ceil(limit.reset / 1000).toString(),
+          },
+        }
+      );
+    }
+
     const rawBody = await req.json();
 
+    // 2. Honeypot detection (campo 'honeypot' o 'website')
+    const honeypot = rawBody.honeypot || rawBody.website;
+    if (honeypot && honeypot.trim() !== "") {
+      // Silently succeed, no email sent, no logging
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
+
+    // 3. Sanitize inputs (escape HTML) with defaults that pass validation
     const sanitizedData = {
-      country: sanitizeInput(rawBody.country || ""),
-      topic: sanitizeInput(rawBody.topic || ""),
+      country: sanitizeInput(rawBody.country || "N/A"),
+      topic: sanitizeInput(rawBody.topic || "General Inquiry"),
       name: sanitizeInput(rawBody.name || ""),
       company: sanitizeInput(rawBody.company || ""),
       email: rawBody.email ? rawBody.email.trim().toLowerCase() : "",
@@ -24,14 +50,14 @@ export async function POST(req: Request) {
 
     if (!validation.success) {
       return NextResponse.json(
-        { success: false, errors: validation.error.flatten().fieldErrors },
+        { success: false, error: "Validation failed" },
         { status: 400 }
       );
     }
 
     const { name, company, email, phone, country, topic, message } = validation.data;
 
-    // Despacho del email vía Resend
+    // 4. Send email via Resend
     const recipient = env.CONTACT_EMAIL;
 
     const emailResponse = await resend.emails.send({
@@ -104,14 +130,21 @@ export async function POST(req: Request) {
     if (emailResponse.error) {
       console.error("Resend Error:", emailResponse.error);
       return NextResponse.json(
-        { success: false, error: emailResponse.error.message },
+        { success: false, error: "Internal server error" },
         { status: 500 }
       );
     }
 
     return NextResponse.json(
       { success: true, message: "Email dispatched successfully" },
-      { status: 200 }
+      {
+        status: 200,
+        headers: {
+          "RateLimit-Limit": "5",
+          "RateLimit-Remaining": limit.remaining.toString(),
+          "RateLimit-Reset": Math.ceil(limit.reset / 1000).toString(),
+        },
+      }
     );
   } catch (error) {
     console.error("Server Error:", error);
