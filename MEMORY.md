@@ -122,19 +122,28 @@ Objetivo: que el sitio comunique con precisión **qué vende Plexus Code**. Todo
 
 **Criterio de salida de la Fase 2:** servicios y copy aprobados por el propietario; cero enlaces genéricos o rotos; paridad de idiomas verificada por prueba.
 
-### Fase 3: Showcase Interactivo y UX
+ ### Fase 3: Showcase Interactivo y UX
 
-Objetivo: demostrar ingeniería con la propia experiencia, sin sacrificar rendimiento.
+Objetivo: demostrar ingeniería con la propia experiencia, sin sacrificar rendimiento, incorporando integraciones clave con estética cyber y textos comerciales claros para clientes no técnicos.
 
-- [ ] **F3-01** Rediseño visual moderno ingeniería/ciberseguridad: jerarquía, tipografía con `next/font`, tokens consistentes, eliminar hex sueltos.
-- [ ] **F3-02** **Microinteracciones técnicas** de alto impacto (terminal, flujos de agentes, grafo MAS, demo conversacional simulada de WhatsApp) con carga diferida y `prefers-reduced-motion`.
-- [ ] **F3-03** Convertir `page.tsx` en Server Component y aislar las hojas interactivas para reducir el JS del cliente.
-- [ ] **F3-04** Pulido de conversión del formulario de contacto: estados de carga/éxito/error, focus trap y restauración de foco, selección de interés (Meta, MAS, AppSec), mensajes traducidos, analítica de conversión respetuosa con la privacidad.
-- [ ] **F3-05** Optimizar `logo.png` y las imágenes; objetivos CWV: LCP ≤ 2,0 s, INP ≤ 200 ms, CLS ≤ 0,05; Lighthouse ≥ 95.
-- [ ] **F3-06** Auditoría de accesibilidad WCAG 2.2 AA y pruebas visuales/E2E (Playwright) de los flujos críticos.
-- [ ] **F3-07** Persistencia del idioma y detección inicial.
+**Nuevas integraciones (estética cyber, textos comerciales claros):**
 
-**Criterio de salida de la Fase 3:** objetivos de CWV y Lighthouse cumplidos en producción; E2E del contacto en verde; revisión visual y de accesibilidad aprobada.
+- [ ] **F3-01** **Layout de "3 Pasos para Empezar"** – tarjetas Bento apiladas verticalmente con tipografía sans-serif de alto impacto (`extrabold`, `tracking‑tight`, `text‑5xl/6xl`). Lenguaje de negocio claro: (1) Diagnóstico y Estrategia, (2) Construcción a Medida, (3) Tu Negocio en Automático.
+- [ ] **F3-02** **Widget de Chat Persistente** – burbuja flotante fija (bottom‑right) que acompañe al usuario durante el scroll y active el asistente al hacer clic.
+- [ ] **F3-03** **Asistente de Voz y Terminal Interactiva** – interfaz tipo consola/orbe holográfico en el chat, con integración futura de Web Speech API y Text‑to‑Speech (ej. ElevenLabs) para interacciones de voz, aclarando nuestras políticas Zero Trust.
+- [ ] **F3-04** **Agendamiento Integrado Nativo** – modal con calendario construido en React/Tailwind (vía API de Cal.com/Calendly), sin usar iframes externos.
+- [ ] **F3-05** **Marquee de Stack Tecnológico** – carrusel horizontal infinito con logos monocromáticos SVG (Next.js, Supabase, Zod, Meta API) que se iluminen en `cyber‑cyan` al hover.
+
+**Refinamientos existentes:**
+
+- [ ] **F3-06** Rediseño visual moderno ingeniería/ciberseguridad: jerarquía, tipografía con `next/font`, tokens consistentes, eliminar hex sueltos.
+- [ ] **F3-07** Convertir `page.tsx` en Server Component y aislar las hojas interactivas para reducir el JS del cliente.
+- [ ] **F3-08** Pulido de conversión del formulario de contacto: estados de carga/éxito/error, focus trap y restauración de foco, selección de interés (Meta, MAS, AppSec), mensajes traducidos, analítica de conversión respetuosa con la privacidad.
+- [ ] **F3-09** Optimizar `logo.png` y las imágenes; objetivos CWV: LCP ≤ 2,0 s, INP ≤ 200 ms, CLS ≤ 0,05; Lighthouse ≥ 95.
+- [ ] **F3-10** Auditoría de accesibilidad WCAG 2.2 AA y pruebas visuales/E2E (Playwright) de los flujos críticos.
+- [ ] **F3-11** Persistencia del idioma y detección inicial.
+
+**Criterio de salida de la Fase 3:** objetivos de CWV y Lighthouse cumplidos en producción; E2E del contacto y del widget de chat en verde; revisión visual y de accesibilidad aprobada.
 
 ## 5. Decisiones vigentes
 
@@ -182,5 +191,5 @@ Los valores reales **no** se versionan. Plantilla pendiente: `.env.example` (F1-
 - **Decisión de versión.** `npm install zod` resolvió `4.6.5` y fijó `^4.6.5`. Se descartó para no introducir una actualización no auditada. Se declaró `^4.4.3` y se conservó `4.4.3` en el lockfile.
 - **Decisión de lockfile.** `npm install` normalizó el lockfile con 5 entradas ajenas (`@tailwindcss/oxide-wasm32-wasi` anidadas). Se revirtió y se aplicó a mano el diff mínimo. Detalle como deuda: TD-11.
 - **Hallazgo al verificar.** El único import directo de `zod` está en `src/lib/validation.ts`. `route.ts` solo importa `@/lib/validation`. La ubicación del diagnóstico inicial estaba imprecisa y ya se corrigió.
-- **Puerta de calidad actual (tras TD-01 a TD-04):** `tsc` 0 errores, ESLint 0 errores y 0 warnings, `build` pasa con variable dummy `RESEND_API_KEY` (requiere TD-07). No hay script `test` hasta F1-02.
+- **Puerta de calidad actual (tras TD‑01 a TD‑07):** `tsc` 0 errores, ESLint 0 errores y 0 warnings, `build` pasa con `RESEND_API_KEY` definida (requiere `.env`). Se dispone de `.env.example`. Pendientes: TD‑05, TD‑06, TD‑08, TD‑09, TD‑10, TD‑11.
 - **Archivos tocados:** `package.json` (+1 línea), `package-lock.json` (+1/−1 efectivo). Sin cambios en `src/`.

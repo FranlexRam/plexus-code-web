@@ -2,8 +2,9 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { contactSchema, sanitizeInput } from "@/lib/validation";
+import { env } from "@/lib/env";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
@@ -31,7 +32,7 @@ export async function POST(req: Request) {
     const { name, company, email, phone, country, topic, message } = validation.data;
 
     // Despacho del email vía Resend
-    const recipient = process.env.CONTACT_EMAIL || "contact@plexuscode.com";
+    const recipient = env.CONTACT_EMAIL;
 
     const emailResponse = await resend.emails.send({
       from: "Plexus Code Inquiry <onboarding@resend.dev>", // Cambia a contacto@plexuscode.com cuando verifiques tu dominio en Resend
