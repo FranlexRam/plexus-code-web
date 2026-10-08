@@ -78,7 +78,7 @@ export default function ContactTerminal() {
   const isError = state === 'error';
 
   return (
-    <section id="contact" className="relative py-28 sm:py-36 px-6 sm:px-8 w-full max-w-7xl mx-auto z-10">
+    <section id="contact" data-testid="contact-terminal-section" className="relative py-28 sm:py-36 px-6 sm:px-8 w-full max-w-7xl mx-auto z-10">
       <div className="glass-card rounded-3xl p-8 sm:p-14 md:p-16 border border-cyan-500/20 bg-slate-950/60 shadow-2xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -138,7 +138,7 @@ export default function ContactTerminal() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5" aria-live="polite">
+              <form data-testid="contact-terminal-form" role="form" onSubmit={handleSubmit} className="space-y-5" aria-live="polite">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-[11px] font-mono text-slate-400 mb-1.5">
@@ -146,6 +146,8 @@ export default function ContactTerminal() {
                     </label>
                     <input
                       type="text"
+                      name="name"
+                      data-testid="contact-name-input"
                       required
                       disabled={isSubmitting}
                       value={formData.name}
@@ -161,6 +163,8 @@ export default function ContactTerminal() {
                     </label>
                     <input
                       type="email"
+                      name="email"
+                      data-testid="contact-email-input"
                       required
                       disabled={isSubmitting}
                       value={formData.email}
@@ -177,6 +181,8 @@ export default function ContactTerminal() {
                   </label>
                   <textarea
                     rows={4}
+                    name="message"
+                    data-testid="contact-message-input"
                     required
                     disabled={isSubmitting}
                     value={formData.message}
