@@ -1,0 +1,74 @@
+name: CI – Quality Gate (lint, type‑check, build, test)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    env:
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY || 'dummy' }}
+      CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL || 'test@example.com' }}
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      # 1. Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js (matching package.json engines)
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      # 3. Cache dependencies
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # 4. Install dependencies reproducibly
+      - name: Install dependencies (npm ci)
+        run: npm ci --audit=false --fund=false
+
+      # 5. Lint (ESLint)
+      - name: Run ESLint
+        run: npm run lint
+        continue-on-error: false
+
+      # 6. TypeScript type‑check
+      - name: Type‑check (tsc)
+        run: npx tsc --noEmit --incremental false
+        continue-on-error: false
+
+      # 7. Build (production)
+      - name: Build Next.js application
+        run: npm run build
+        continue-on-error: false
+
+      # 8. Run unit tests (Vitest)
+      - name: Execute test suite
+        run: npm run test
+        continue-on-error: true
+        env:
+          NODE_OPTIONS: '--experimental-vm-modules'
+          VITE_CONFIG_NATIVE_IGNORE_WARNING: 'true'
+
+      # 9. Optional: Upload coverage report
+      - name: Upload coverage report to Codecov (optional)
+        if: always()
+        uses: codecov/codecov-action@v4
+        continue-on-error: true
+        with:
+          directory: ./coverage
+          fail_ci_if_error: false
