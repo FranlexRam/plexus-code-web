@@ -65,6 +65,9 @@ export const translations = {
       successTitle: "MENSAJE RECIBIDO",
       successMsg: "Nos pondremos en contacto contigo a la brevedad posible.",
       reset: "Enviar otro mensaje",
+      sending: "Enviando...",
+      errorGeneric: "Ocurrió un error. Por favor, intenta nuevamente más tarde.",
+      errorValidation: "Por favor, corrige los errores en el formulario.",
       rights: "© 2026 PLEXUS CODE. Todos los derechos reservados.",
     },
     modal: {
@@ -194,6 +197,9 @@ export const translations = {
       successTitle: "INQUIRY RECEIVED",
       successMsg: "Our engineering team will get back to you shortly.",
       reset: "Send another message",
+      sending: "Sending...",
+      errorGeneric: "An error occurred. Please try again later.",
+      errorValidation: "Please correct the errors in the form.",
       rights: "© 2026 PLEXUS CODE. All rights reserved.",
     },
     modal: {
@@ -323,6 +329,9 @@ export const translations = {
       successTitle: "SOLICITAÇÃO RECEBIDA",
       successMsg: "Nossa equipe entrará em contato o mais breve possível.",
       reset: "Enviar outra mensagem",
+      sending: "Enviando...",
+      errorGeneric: "Ocorreu um erro. Por favor, tente novamente mais tarde.",
+      errorValidation: "Por favor, corrija os erros no formulário.",
       rights: "© 2026 PLEXUS CODE. Todos os derechos reservados.",
     },
     modal: {

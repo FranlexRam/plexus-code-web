@@ -50,3 +50,16 @@ export const contactSchema = z.object({
 });
 
 export type ContactFormData = z.infer<typeof contactSchema>;
+
+export const contactTerminalSchema = contactSchema.pick({
+  name: true,
+  email: true,
+  message: true,
+}).extend({
+  topic: z.string().default("Custom Software & SaaS"),
+  country: z.string().default("N/A"),
+  company: z.string().default(""),
+  phone: z.string().default(""),
+});
+
+export type ContactTerminalFormData = z.infer<typeof contactTerminalSchema>;
