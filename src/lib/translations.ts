@@ -69,6 +69,15 @@ export const translations = {
       errorGeneric: "Ocurrió un error. Por favor, intenta nuevamente más tarde.",
       errorValidation: "Por favor, corrige los errores en el formulario.",
       rights: "© 2026 PLEXUS CODE. Todos los derechos reservados.",
+      // Tarjeta de contacto
+      cardEmailLabel: "CORREO DIRECTO",
+      cardEmailValue: "contact@plexuscode.com",
+      cardSecurityLabel: "GARANTÍA TÉCNICA",
+      cardSecurityMotto: "Secure by design. Scalable by default.",
+      // Placeholders
+      namePlaceholder: "Ej. Franlex Ramírez",
+      emailPlaceholder: "tu@empresa.com",
+      messagePlaceholder: "Detalles sobre el proyecto, arquitectura requerida o requerimientos de seguridad...",
     },
     modal: {
       title: "CONTÁCTANOS",
@@ -201,6 +210,15 @@ export const translations = {
       errorGeneric: "An error occurred. Please try again later.",
       errorValidation: "Please correct the errors in the form.",
       rights: "© 2026 PLEXUS CODE. All rights reserved.",
+      // Contact card
+      cardEmailLabel: "DIRECT EMAIL",
+      cardEmailValue: "contact@plexuscode.com",
+      cardSecurityLabel: "TECHNICAL GUARANTEE",
+      cardSecurityMotto: "Secure by design. Scalable by default.",
+      // Placeholders
+      namePlaceholder: "e.g., Alexander Wright",
+      emailPlaceholder: "contact@company.com",
+      messagePlaceholder: "Outline project scope, technical stack requirements or deployment timeline...",
     },
     modal: {
       title: "CONTACT US",
@@ -333,6 +351,15 @@ export const translations = {
       errorGeneric: "Ocorreu um erro. Por favor, tente novamente mais tarde.",
       errorValidation: "Por favor, corrija os erros no formulário.",
       rights: "© 2026 PLEXUS CODE. Todos os derechos reservados.",
+      // Cartão de contato
+      cardEmailLabel: "E-MAIL DIRETO",
+      cardEmailValue: "contact@plexuscode.com",
+      cardSecurityLabel: "GARANTIA TÉCNICA",
+      cardSecurityMotto: "Secure by design. Scalable by default.",
+      // Placeholders
+      namePlaceholder: "Ex. Alexander Wright",
+      emailPlaceholder: "contato@empresa.com",
+      messagePlaceholder: "Descreva o escopo do projeto, requisitos de arquitetura ou prazos esperados...",
     },
     modal: {
       title: "FALE CONOSCO",

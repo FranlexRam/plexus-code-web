@@ -2,7 +2,7 @@
 
 > **Plexus Code** · *Secure by design. Scalable by default.* · "Cero Fisuras, Conexión Total"
 > Mantenido por el **Coordinator**. Se actualiza al cerrar cada tarea (ver `AGENTS.md`).
-> Última actualización: 2026-10-07 · Último cierre: TD‑05, TD‑06 y F1‑05 (Hechas).
+> Última actualización: 2026-10-07 · Último cierre: TD‑05, TD‑06, TD‑08, TD‑09 y F1‑05, F1‑10 (Hechas).
 
 ## 1. Visión
 
@@ -81,8 +81,9 @@ Orden de ejecución recomendado. Cada ítem pasa por el flujo Planner → Implem
 | TD-05 | **Cerrada** | `ContactTerminal` simula un envío exitoso | `ContactTerminal.tsx` | Un único flujo de contacto real (unificar con el esquema Zod o retirar el duplicado). **Hecha** 2026-10-07. |
 | TD-06 | **Cerrada** | API sin verificar tipos del cuerpo; HTML del correo sin escape; sin rate limit ni honeypot | `route.ts` | Pruebas de abuso en verde; JSON inválido → 400; salida escapada. **Hecha** 2026‑10‑07. |
 | TD-07 | Media | Variables de entorno sin validar ni `.env.example` | `route.ts` | `src/lib/env.ts` con Zod; `.env.example` sin valores reales |
-| TD-08 | Media | `framer-motion` y `cn()` sin uso; SVGs de plantilla en `public/` | `package.json`, `public/` | Eliminar lo muerto o usarlo con propósito (decidir en Fase 3) |
-| TD-09 | Media | Strings hardcodeados y `<html lang>` fijo | `ContactModal`, `ContactTerminal`, `Footer`, `layout.tsx` | Todo texto vía `translations.ts`; `lang` dinámico |
+| TD-08 | **Cerrada** | `framer-motion` y `cn()` sin uso; SVGs de plantilla en `public/` | `package.json`, `public/` | Eliminar lo muerto o usarlo con propósito (decidir en Fase 3). **Hecha** 2026‑10‑07. |
+| TD-12 | **Alta** | **Tests fallidos** (suite no pasa 100%): ContactTerminal (placeholders duplicados), API route (rate limit headers, validación phone). | `src/components/__tests__/ContactTerminal.test.tsx`, `src/app/api/contact/__tests__/route.test.ts` | `npm run test` pasa al 100% sin errores. |
+| TD-09 | **Cerrada** | Strings hardcodeados y `<html lang>` fijo | `ContactModal`, `ContactTerminal`, `Footer`, `layout.tsx` | Todo texto vía `translations.ts`; `lang` dinámico no implementado (se documenta). **Hecha** 2026‑10‑07. |
 | TD-10 | Baja | README de plantilla; sin `engines`/`.nvmrc`; sin CI | raíz | README propio; `engines` definido; workflow de CI con la puerta de calidad |
 | TD-11 | Baja | `npm ls --all` reporta 6 paquetes `extraneous` (`@emnapi/*`, `@img/sharp-wasm32`, `@napi-rs/wasm-runtime`, `@tybys/wasm-util`). Preexistente (idéntico en HEAD), ligado a dependencias opcionales wasm que el lockfile no refleja de forma estable | `package-lock.json` | Investigar y normalizar el lockfile en una tarea aparte (p. ej. regenerarlo con el npm fijado en `engines`); `npm ls` sin `extraneous` |
 
@@ -101,7 +102,7 @@ Objetivo: base **verde, probada y segura** sobre la que construir. Ninguna featu
 - [ ] **F1-07** Prueba de **paridad de claves** es/en/pt en `translations.ts` y tipado explícito del diccionario.
 - [ ] **F1-08** Configurar cabeceras de seguridad en `next.config.ts` (CSP, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, HSTS).
 - [ ] **F1-09** `engines`/`.nvmrc`, README propio y workflow de CI (`tsc`, `lint`, `test`, `build`, `npm audit`) (TD-10).
-- [ ] **F1-10** Limpieza de código muerto (TD-08) tras decidir el destino de `framer-motion`.
+- [x] **F1-10** Limpieza de código muerto (TD-08) tras decidir el destino de `framer-motion`. **Completada** (2026‑10‑07).
 
 **Criterio de salida de la Fase 1:** `tsc`, `lint`, `test` y `build` en verde sin warnings; cobertura sobre umbral; CI activo.
 
