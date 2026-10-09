@@ -28,7 +28,7 @@ export const translations = {
       metric3: "AGENTES IA",
       metric3Val: "Operacionales",
     },
-    services: {
+services: {
       badge: "Capacidades Técnicas",
       title: "Soluciones de Ingeniería para Sistemas Críticos",
       description:
@@ -39,9 +39,12 @@ export const translations = {
       card2Title: "Ciberseguridad & AppSec",
       card2Desc:
         "Auditorías de código, blindaje de endpoints y mitigación de vulnerabilidades OWASP para proteger la integridad del negocio.",
-      card3Title: "Agentes de IA & Automatización",
+      card3Title: "Agentes Conversacionales Autónomos",
       card3Desc:
-        "Modelos contextuales y flujos autónomos conectados a bases de datos para optimizar procesos operativos sin fricción.",
+        "Automatiza la atención al cliente en WhatsApp, Instagram, TikTok y Facebook Marketplace con agentes que responden en segundos y gestionan leads sin fricción.",
+      card3Bullet1: "Agentes conversacionales autónomos con integración directa a Meta (WhatsApp, Instagram, TikTok, Facebook Marketplace)",
+      card3Bullet2: "Orquestación de LLMs para respuestas contextuales y gestión de leads",
+      card3Bullet3: "Políticas Zero-Trust: validación de webhooks, ratelimiting, sanitización de entrada",
       card4Title: "Pipelines de Datos & Pagos",
       card4Desc:
         "Integración segura de pasarelas de pago, webhooks asíncronos y bases de datos sincronizadas en tiempo real.",
@@ -180,9 +183,12 @@ export const translations = {
       card2Title: "AppSec & Defensive Hardening",
       card2Desc:
         "Code auditing, endpoint protection, and OWASP mitigation designed to protect digital assets from day one.",
-      card3Title: "AI Agents & Automation",
+      card3Title: "Autonomous Conversational Agents",
       card3Desc:
-        "Contextual language models and autonomous pipelines integrated directly with your database to streamline complex operations.",
+        "Automate customer service on WhatsApp, Instagram, TikTok, and Facebook Marketplace with agents that respond in seconds and manage leads without friction.",
+      card3Bullet1: "Autonomous conversational agents with direct Meta integration (WhatsApp, Instagram, TikTok, Facebook Marketplace)",
+      card3Bullet2: "LLM orchestration for contextual responses and lead management",
+      card3Bullet3: "Zero‑Trust policies: webhook validation, rate limiting, input sanitization",
       card4Title: "Data Pipelines & Payment Systems",
       card4Desc:
         "Secure payment gateway integrations, asynchronous webhooks, and real-time synchronized databases.",
@@ -310,7 +316,7 @@ export const translations = {
       metric3: "AGENTES IA",
       metric3Val: "Operacionais",
     },
-    services: {
+services: {
       badge: "Capacidades Técnicas",
       title: "Soluções de Engenharia para Sistemas Críticos",
       description:
@@ -323,7 +329,10 @@ export const translations = {
         "Auditorias de código, proteção de endpoints e mitigação de vulnerabilidades OWASP desde o primeiro dia.",
       card3Title: "Agentes de IA & Automação",
       card3Desc:
-        "Modelos de linguagem integrados diretamente ao seu banco de dados para automatizar operações complexas.",
+        "Automatize o atendimento ao cliente no WhatsApp, Instagram, TikTok e Facebook Marketplace com agentes que respondem em segundos e gerenciam leads sem fricção.",
+      card3Bullet1: "Agentes autônomos conversacionais com integração direta à Meta (WhatsApp, Instagram, TikTok, Facebook Marketplace)",
+      card3Bullet2: "Orquestração de LLMs para respostas contextuais e gestão de leads",
+      card3Bullet3: "Políticas Zero‑Trust: validação de webhooks, rate limiting, sanitização de entrada",
       card4Title: "Pipelines de Dados & Pagamentos",
       card4Desc:
         "Integração de gateways de pagamento, webhooks assíncronos e bancos de dados sincronizados em tempo real.",

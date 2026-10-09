@@ -138,15 +138,15 @@ export default function ServicesBento() {
           <ul className="space-y-3 pt-2">
             <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
               <CheckCircle className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5 sm:mt-0" />
-              <span>Agentes autónomos con bases vectoriales</span>
+              <span>{t.services.card3Bullet1}</span>
             </li>
             <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
               <CheckCircle className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5 sm:mt-0" />
-              <span>Pipelines asíncronos y sincronización en tiempo real</span>
+              <span>{t.services.card3Bullet2}</span>
             </li>
             <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
               <CheckCircle className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5 sm:mt-0" />
-              <span>Automatización completa sin fricción operativa</span>
+              <span>{t.services.card3Bullet3}</span>
             </li>
           </ul>
         </div>
