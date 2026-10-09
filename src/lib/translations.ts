@@ -45,9 +45,12 @@ services: {
       card3Bullet1: "Agentes conversacionales autónomos con integración directa a Meta (WhatsApp, Instagram, TikTok, Facebook Marketplace)",
       card3Bullet2: "Orquestación de LLMs para respuestas contextuales y gestión de leads",
       card3Bullet3: "Políticas Zero-Trust: validación de webhooks, ratelimiting, sanitización de entrada",
-      card4Title: "Pipelines de Datos & Pagos",
+      card4Title: "Sistemas Multiagente (MAS) B2B",
       card4Desc:
-        "Integración segura de pasarelas de pago, webhooks asíncronos y bases de datos sincronizadas en tiempo real.",
+        "Orquestación de flujos automatizados con trazabilidad completa para procesos operativos complejos y servicios empresariales.",
+      card4Bullet1: "Arquitectura distribuida multiagente con comunicación segura e isolation por tarea",
+      card4Bullet2: "Automatización end‑to‑end con monitoreo en tiempo real y dashboards operativos",
+      card4Bullet3: "Traza auditiva de eventos y decisiones para cumplimiento regulatorio",
     },
     stack: {
       badge: "Ecosistema Tecnológico",
@@ -189,9 +192,12 @@ services: {
       card3Bullet1: "Autonomous conversational agents with direct Meta integration (WhatsApp, Instagram, TikTok, Facebook Marketplace)",
       card3Bullet2: "LLM orchestration for contextual responses and lead management",
       card3Bullet3: "Zero‑Trust policies: webhook validation, rate limiting, input sanitization",
-      card4Title: "Data Pipelines & Payment Systems",
+      card4Title: "Multi‑Agent Systems (MAS) B2B",
       card4Desc:
-        "Secure payment gateway integrations, asynchronous webhooks, and real-time synchronized databases.",
+        "Orchestrated automated flows with full traceability for complex operational processes and enterprise‑grade services.",
+      card4Bullet1: "Distributed multi‑agent architecture with secure communication and task isolation",
+      card4Bullet2: "End‑to‑end automation with real‑time monitoring and operational dashboards",
+      card4Bullet3: "Auditable event‑decision trails for regulatory compliance",
     },
     stack: {
       badge: "Technology Stack",
@@ -333,9 +339,12 @@ services: {
       card3Bullet1: "Agentes autônomos conversacionais com integração direta à Meta (WhatsApp, Instagram, TikTok, Facebook Marketplace)",
       card3Bullet2: "Orquestração de LLMs para respostas contextuais e gestão de leads",
       card3Bullet3: "Políticas Zero‑Trust: validação de webhooks, rate limiting, sanitização de entrada",
-      card4Title: "Pipelines de Dados & Pagamentos",
+      card4Title: "Sistemas Multiagente (MAS) B2B",
       card4Desc:
-        "Integração de gateways de pagamento, webhooks assíncronos e bancos de dados sincronizados em tempo real.",
+        "Orquestração de fluxos automatizados com rastreabilidade completa para processos operacionais complexos e serviços empresariais.",
+      card4Bullet1: "Arquitetura distribuída multiagente com comunicação segura e isolamento por tarefa",
+      card4Bullet2: "Automação de ponta a ponta com monitoramento em tempo real e dashboards operacionais",
+      card4Bullet3: "Rastreabilidade de eventos e decisões para conformidade regulatória",
     },
     stack: {
       badge: "Stack Tecnológico",

@@ -2,7 +2,7 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { Code2, ShieldAlert, Bot, CheckCircle } from "lucide-react";
+import { Code2, ShieldAlert, Bot, CheckCircle, Cpu } from "lucide-react";
 
 export default function ServicesBento() {
   const { t } = useLanguage();
@@ -123,8 +123,8 @@ export default function ServicesBento() {
         </div>
       </div>
 
-      {/* Bloque 3: IA */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 xl:gap-20 items-center">
+      {/* Bloque与合作3: IA */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 xl:gap-20 items-center mb-20 sm:mb-28 lg:mb-36">
         <div className="lg:col-span-6 space-y-4 sm:space-y-6">
           <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-cyan-950/70 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
             <Bot className="w-6 h-6 sm:w-7 sm:h-7" />
@@ -162,6 +162,56 @@ export default function ServicesBento() {
             <div className="text-emerald-400">&gt; 100% matched context extracted in 42ms</div>
             <div className="text-slate-200">&gt; Response streamed securely via TLS 1.3</div>
           </div>
+        </div>
+      </div>
+
+      {/* Bloque 4: MAS B2B */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 xl:gap-20 items-center">
+        <div className="lg:col-span-6 order-2 lg:order-1 glass-card rounded-3xl p-5 sm:p-8 xl:p-10 border border-purple-500/20 bg-slate-950/70 shadow-2xl">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4 text-xs sm:text-sm font-mono text-slate-400">
+            <span>multi-agent :: orchestration</span>
+            <span className="text-purple-400 font-semibold">STATUS: OPERATIONAL</span>
+          </div>
+          <div className="space-y-3 font-mono text-xs sm:text-sm text-slate-300">
+            <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+              <span className="text-slate-400">Agents Online:</span>
+              <span className="text-purple-400 font-bold">12 Active</span>
+            </div>
+            <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+              <span className="text-slate-400">Process Automation:</span>
+              <span className="text-emerald-400 font-bold">98.7% Success Rate</span>
+            </div>
+            <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+              <span className="text-slate-400">Traceability:</span>
+              <span className="text-cyan-400 font-bold">Full Audit Trail</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:col-span-6 order-1 lg:order-2 space-y-4 sm:space-y-6">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-purple-950/70 border border-purple-500/30 flex items-center justify-center text-purple-400">
+            <Cpu className="w-6 h-6 sm:w-7 sm:h-7" />
+          </div>
+          <h3 className="text-fluid-h3 font-bold text-white tracking-tight">
+            {t.services.card4Title}
+          </h3>
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
+            {t.services.card4Desc}
+          </p>
+          <ul className="space-y-3 pt-2">
+            <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
+              <CheckCircle className="w-5 h-5 text-purple-400 shrink-0 mt-0.5 sm:mt-0" />
+              <span>{t.services.card4Bullet1}</span>
+            </li>
+            <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
+              <CheckCircle className="w-5 h-5 text-purple-400 shrink-0 mt-0.5 sm:mt-0" />
+              <span>{t.services.card4Bullet2}</span>
+            </li>
+            <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
+              <CheckCircle className="w-5 h-5 text-purple-400 shrink-0 mt-0.5 sm:mt-0" />
+              <span>{t.services.card4Bullet3}</span>
+            </li>
+          </ul>
         </div>
       </div>
 

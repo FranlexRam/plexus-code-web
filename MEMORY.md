@@ -111,7 +111,7 @@ Objetivo: base **verde, probada y segura** sobre la que construir. Ninguna featu
 Objetivo: que el sitio comunique con precisión **qué vende Plexus Code**. Todo dato público debe estar confirmado por el propietario (ver preguntas abiertas).
 
 - [x] **F2-01** **Servicio estrella: Agentes de IA sobre Meta**: WhatsApp (Business), Instagram y TikTok; reservas; integración con CRM. Casos de uso y flujo técnico. **Completada** (2026-10-07).
-- [ ] **F2-02** **Soluciones MAS B2B**: orquestación de Sistemas Multiagente, automatizaciones operativas y trazabilidad.
+- [x] **F2-02** **Soluciones MAS B2B**: orquestación de Sistemas Multiagente, automatizaciones operativas y trazabilidad. **Completada** (2026-10-08).
 - [ ] **F2-03** **AppSec Defensiva**: seguridad desde la primera línea ("Cero Fisuras"), modelado de amenazas, hardening y revisión de código.
 - [ ] **F2-04** **Automatización de Procesos**: SaaS operativos; ficha de **OpsFlow AI**.
 - [ ] **F2-05** **Fintech**: ficha de **AON Pay** (agentes conversacionales). Requiere confirmar qué se puede publicar.
