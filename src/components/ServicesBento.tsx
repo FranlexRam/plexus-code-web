@@ -2,7 +2,7 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { Code2, ShieldAlert, Bot, CheckCircle, Cpu } from "lucide-react";
+import { Code2, ShieldAlert, Bot, CheckCircle, Cpu, Workflow, CreditCard } from "lucide-react";
 
 export default function ServicesBento() {
   const { t } = useLanguage();
@@ -210,6 +210,106 @@ export default function ServicesBento() {
             <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
               <CheckCircle className="w-5 h-5 text-purple-400 shrink-0 mt-0.5 sm:mt-0" />
               <span>{t.services.card4Bullet3}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Bloque 5: OpsFlow AI */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 xl:gap-20 items-center mt-20 sm:mt-28 lg:mt-36 mb-20 sm:mb-28 lg:mb-36">
+        <div className="lg:col-span-6 space-y-4 sm:space-y-6">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-950/70 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <Workflow className="w-6 h-6 sm:w-7 sm:h-7" />
+          </div>
+          <h3 className="text-fluid-h3 font-bold text-white tracking-tight">
+            {t.services.card5Title}
+          </h3>
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
+            {t.services.card5Desc}
+          </p>
+          <ul className="space-y-3 pt-2">
+            <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
+              <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
+              <span>{t.services.card5Bullet1}</span>
+            </li>
+            <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
+              <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
+              <span>{t.services.card5Bullet2}</span>
+            </li>
+            <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
+              <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
+              <span>{t.services.card5Bullet3}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="lg:col-span-6 glass-card rounded-3xl p-5 sm:p-8 xl:p-10 border border-emerald-500/20 bg-slate-950/70 shadow-2xl">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4 text-xs sm:text-sm font-mono text-slate-400">
+            <span>opsflow-ai :: process-engine</span>
+            <span className="text-emerald-400 font-semibold">DEPLOYED: V1.4</span>
+          </div>
+          <div className="space-y-3 font-mono text-xs sm:text-sm text-slate-300">
+            <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+              <span className="text-slate-400">Active Workflows:</span>
+              <span className="text-emerald-400 font-bold">247 Running</span>
+            </div>
+            <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+              <span className="text-slate-400">Avg Processing:</span>
+              <span className="text-cyan-400 font-bold">12.3s per task</span>
+            </div>
+            <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+              <span className="text-slate-400">SLA Compliance:</span>
+              <span className="text-purple-400 font-bold">99.8% Uptime</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bloque 6: AON Pay */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 xl:gap-20 items-center mt-20 sm:mt-28 lg:mt-36">
+        <div className="lg:col-span-6 order-2 lg:order-1 glass-card rounded-3xl p-5 sm:p-8 xl:p-10 border border-amber-500/20 bg-slate-950/70 shadow-2xl">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4 text-xs sm:text-sm font-mono text-slate-400">
+            <span>aon-pay :: fintech-core</span>
+            <span className="text-amber-400 font-semibold">STATUS: LIVE</span>
+          </div>
+          <div className="space-y-3 font-mono text-xs sm:text-sm text-slate-300">
+            <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+              <span className="text-slate-400">Transactions/Day:</span>
+              <span className="text-amber-400 font-bold">5,200+</span>
+            </div>
+            <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+              <span className="text-slate-400">Agent Uptime:</span>
+              <span className="text-emerald-400 font-bold">99.95% (24/7)</span>
+            </div>
+            <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+              <span className="text-slate-400">Support Resolution:</span>
+              <span className="text-cyan-400 font-bold">&lt; 3min avg</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:col-span-6 order-1 lg:order-2 space-y-4 sm:space-y-6">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-950/70 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <CreditCard className="w-6 h-6 sm:w-7 sm:h-7" />
+          </div>
+          <h3 className="text-fluid-h3 font-bold text-white tracking-tight">
+            {t.services.card6Title}
+          </h3>
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 leading-relaxed">
+            {t.services.card6Desc}
+          </p>
+          <ul className="space-y-3 pt-2">
+            <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
+              <CheckCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5 sm:mt-0" />
+              <span>{t.services.card6Bullet1}</span>
+            </li>
+            <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
+              <CheckCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5 sm:mt-0" />
+              <span>{t.services.card6Bullet2}</span>
+            </li>
+            <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
+              <CheckCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5 sm:mt-0" />
+              <span>{t.services.card6Bullet3}</span>
             </li>
           </ul>
         </div>

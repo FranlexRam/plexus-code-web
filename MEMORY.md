@@ -113,8 +113,8 @@ Objetivo: que el sitio comunique con precisión **qué vende Plexus Code**. Todo
 - [x] **F2-01** **Servicio estrella: Agentes de IA sobre Meta**: WhatsApp (Business), Instagram y TikTok; reservas; integración con CRM. Casos de uso y flujo técnico. **Completada** (2026-10-07).
 - [x] **F2-02** **Soluciones MAS B2B**: orquestación de Sistemas Multiagente, automatizaciones operativas y trazabilidad. **Completada** (2026-10-08).
 - [x] **F2-03** **AppSec Defensiva**: seguridad desde la primera línea ("Cero Fisuras"), modelado de amenazas, hardening y revisión de código. **Completada** (2026-10-08).
-- [ ] **F2-04** **Automatización de Procesos**: SaaS operativos; ficha de **OpsFlow AI**.
-- [ ] **F2-05** **Fintech**: ficha de **AON Pay** (agentes conversacionales). Requiere confirmar qué se puede publicar.
+- [x] **F2-04** **Automatización de Procesos**: SaaS operativos; ficha de **OpsFlow AI**. **Completada** (2026-10-08).
+- [x] **F2-05** **Fintech**: ficha de **AON Pay** (agentes conversacionales). **Completada** (2026-10-08).
 - [ ] **F2-06** Reescritura profesional del copy en **es / en / pt** (Hero, servicios, CTA, TechStack) con paridad total y sin métricas sin respaldo.
 - [ ] **F2-07** Corregir enlaces oficiales: LinkedIn público de la empresa, Instagram oficial, TikTok, y verificar el correo `contact@plexuscode.com`. Quitar el enlace de administración.
 - [ ] **F2-08** Corregir el Footer (versión de Next.js, enlaces rotos) y crear páginas reales de **Privacidad** y **Términos**.
@@ -123,9 +123,12 @@ Objetivo: que el sitio comunique con precisión **qué vende Plexus Code**. Todo
 
 **Criterio de salida de la Fase 2:** servicios y copy aprobados por el propietario; cero enlaces genéricos o rotos; paridad de idiomas verificada por prueba.
 
- ### Fase 3: Showcase Interactivo y UX
+  ### Fase 3: Showcase Interactivo y UX
 
 Objetivo: demostrar ingeniería con la propia experiencia, sin sacrificar rendimiento, incorporando integraciones clave con estética cyber y textos comerciales claros para clientes no técnicos.
+
+**Nota técnica para micro‑demos en video (Fase 3):**
+Implementar modales interactivos o secciones dedicadas para micro‑demos en video (8‑15s, bucle autoplay, formato .webm/.mp4 altamente comprimido y con datos sanitizados) para los casos de éxito de OpsFlow AI y AON Pay, evitando saturar el menú ejecutivo del Bento Box.
 
 **Nuevas integraciones (estética cyber, textos comerciales claros):**
 
@@ -188,6 +191,8 @@ Los valores reales **no** se versionan. Plantilla disponible: `.env.example` (F1
 | 2026-10-07 | **F1‑02 completada** (Vitest instalado y configurado). Dependencias: `vitest`, `@vitest/coverage-v8`, `@testing-library/react`, `jsdom`, `@vitejs/plugin-react`. Scripts `test`, `test:watch`, `test:coverage`. Config `vitest.config.mts` con alias `@/`, entorno jsdom y umbrales globales del 70 %. **Reviewer: Aprobado.** Evidencia: `npm run test` y `npm run test:coverage` ejecutan sin errores de configuración. | Coordinator / Planner / Implementer / Reviewer |
 | 2026-10-07 | **TD‑05 resuelta** (`Pendiente → Especificada → En implementación → En revisión → Hecha`). `ContactTerminal` ahora valida con `contactTerminalSchema` (derivado de Zod) y envía datos reales a `/api/contact`. Estados: `idle`, `submitting`, `success`, `error`. **Reviewer: Aprobado con cambios requeridos (baja severidad)** – tests fallan por duplicación de placeholders con `Footer.tsx`. Puerta de calidad: `tsc` 0 errores, `lint` 0, `build` pasa. | Coordinator / Planner / Implementer / Reviewer |
 | 2026-10-07 | **TD‑06 resuelta** (`Pendiente → Especificada → En implementación → En revisión → Hecha`). API hardening: sanitización mejorada (escape HTML), honeypot anti‑spam (`website`), rate limiting (5/60s por IP), headers `RateLimit‑*`, errores genéricos sin filtración. **Reviewer: Aprobado con cambios requeridos (baja severidad)** – tests unitarios fallan por detalles de validación (`phone` regex) y mock de headers. Puerta de calidad: `tsc` 0 errores, `lint` 0, `build` pasa. | Coordinator / Planner / Implementer / Reviewer |
+
+| 2026-10-08 | **F2‑01 a F2‑05 completadas** (Contenido y Posicionamiento Core). Servicios implementados: 1) Agentes de IA sobre Meta, 2) MAS B2B, 3) AppSec Defensiva, 4) OpsFlow AI, 5) AON Pay. Todos con paridad de idiomas es/en/pt y cero texto hardcoded. **Reviewer: Aprobado.** Evidencia: `tsc` 0 errores, `lint` 0 errores (warnings existentes no relacionados). Layout Bento completo con seis tarjetas. | Coordinator / Planner / Implementer / Reviewer |
 
 - **Spec EARS.** (1) El `package.json` deberá declarar `zod` en `dependencies`. (2) Cuando se ejecute `npm ci --omit=dev`, el sistema deberá instalar `zod`. (3) El `package-lock.json` deberá estar sincronizado con `package.json` y no deberá marcar `zod` como `dev`. (4) Si se declara `zod`, entonces la versión resuelta deberá seguir siendo la ya auditada (4.4.3), sin actualizaciones no solicitadas.
 - **Rojo (antes).** `npm ci --omit=dev` en directorio temporal: `node_modules/zod` ausente (`npm ls zod --omit=dev` → vacío).
