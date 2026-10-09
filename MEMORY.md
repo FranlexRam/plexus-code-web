@@ -112,7 +112,7 @@ Objetivo: que el sitio comunique con precisión **qué vende Plexus Code**. Todo
 
 - [x] **F2-01** **Servicio estrella: Agentes de IA sobre Meta**: WhatsApp (Business), Instagram y TikTok; reservas; integración con CRM. Casos de uso y flujo técnico. **Completada** (2026-10-07).
 - [x] **F2-02** **Soluciones MAS B2B**: orquestación de Sistemas Multiagente, automatizaciones operativas y trazabilidad. **Completada** (2026-10-08).
-- [ ] **F2-03** **AppSec Defensiva**: seguridad desde la primera línea ("Cero Fisuras"), modelado de amenazas, hardening y revisión de código.
+- [x] **F2-03** **AppSec Defensiva**: seguridad desde la primera línea ("Cero Fisuras"), modelado de amenazas, hardening y revisión de código. **Completada** (2026-10-08).
 - [ ] **F2-04** **Automatización de Procesos**: SaaS operativos; ficha de **OpsFlow AI**.
 - [ ] **F2-05** **Fintech**: ficha de **AON Pay** (agentes conversacionales). Requiere confirmar qué se puede publicar.
 - [ ] **F2-06** Reescritura profesional del copy en **es / en / pt** (Hero, servicios, CTA, TechStack) con paridad total y sin métricas sin respaldo.

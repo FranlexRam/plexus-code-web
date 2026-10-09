@@ -109,15 +109,15 @@ export default function ServicesBento() {
           <ul className="space-y-3 pt-2">
             <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
               <CheckCircle className="w-5 h-5 text-blue-400 shrink-0 mt-0.5 sm:mt-0" />
-              <span>Auditorías de código y análisis estático</span>
+              <span>{t.services.card2Bullet1}</span>
             </li>
             <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
               <CheckCircle className="w-5 h-5 text-blue-400 shrink-0 mt-0.5 sm:mt-0" />
-              <span>Políticas Zero-Trust y hardening cloud</span>
+              <span>{t.services.card2Bullet2}</span>
             </li>
             <li className="flex items-start sm:items-center gap-3 text-sm sm:text-base text-slate-200">
               <CheckCircle className="w-5 h-5 text-blue-400 shrink-0 mt-0.5 sm:mt-0" />
-              <span>Blindaje de APIs contra fugas de datos</span>
+              <span>{t.services.card2Bullet3}</span>
             </li>
           </ul>
         </div>

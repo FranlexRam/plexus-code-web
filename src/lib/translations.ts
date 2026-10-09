@@ -36,9 +36,12 @@ services: {
       card1Title: "Plataformas Web & SaaS",
       card1Desc:
         "Desarrollo full-stack con Next.js y TypeScript. Interfaces rápidas, código limpio y rendimiento optimizado para alta concurrencia.",
-      card2Title: "Ciberseguridad & AppSec",
+      card2Title: "AppSec Defensiva & Hardening",
       card2Desc:
-        "Auditorías de código, blindaje de endpoints y mitigación de vulnerabilidades OWASP para proteger la integridad del negocio.",
+        "Cero Fisuras desde la primera línea: modelado de amenazas, hardening de código y revisión sistemática para proteger la integridad de la plataforma.",
+      card2Bullet1: "Modelado de amenazas y análisis de superficie de ataque desde el diseño",
+      card2Bullet2: "Hardening de infraestructura cloud y blindaje de endpoints con políticas Zero‑Trust",
+      card2Bullet3: "Revisión de código y auditorías automatizadas (SAST/DAST) integradas en CI/CD",
       card3Title: "Agentes Conversacionales Autónomos",
       card3Desc:
         "Automatiza la atención al cliente en WhatsApp, Instagram, TikTok y Facebook Marketplace con agentes que responden en segundos y gestionan leads sin fricción.",
@@ -183,9 +186,12 @@ services: {
       card1Title: "Web Platforms & Custom SaaS",
       card1Desc:
         "Full-stack development with Next.js and TypeScript. Fast interfaces, clean code, and architectures optimized for high concurrency.",
-      card2Title: "AppSec & Defensive Hardening",
+      card2Title: "Defensive AppSec & Hardening",
       card2Desc:
-        "Code auditing, endpoint protection, and OWASP mitigation designed to protect digital assets from day one.",
+        "Zero gaps from day one: threat modeling, code hardening, and systematic review to protect platform integrity.",
+      card2Bullet1: "Threat modeling and attack surface analysis from the design phase",
+      card2Bullet2: "Cloud infrastructure hardening and endpoint protection with Zero‑Trust policies",
+      card2Bullet3: "Code review and automated audits (SAST/DAST) integrated into CI/CD",
       card3Title: "Autonomous Conversational Agents",
       card3Desc:
         "Automate customer service on WhatsApp, Instagram, TikTok, and Facebook Marketplace with agents that respond in seconds and manage leads without friction.",
@@ -330,9 +336,12 @@ services: {
       card1Title: "Plataformas Web & SaaS Sob Medida",
       card1Desc:
         "Desenvolvimento full-stack com Next.js e TypeScript. Interfaces rápidas e arquiteturas preparadas para alta concorrência.",
-      card2Title: "Cibersegurança & Blindagem AppSec",
+      card2Title: "AppSec Defensiva & Hardening",
       card2Desc:
-        "Auditorias de código, proteção de endpoints e mitigação de vulnerabilidades OWASP desde o primeiro dia.",
+        "Zero gaps desde a primeira linha: modelagem de ameaças, hardening de código e revisão sistemática para proteger a integridade da plataforma.",
+      card2Bullet1: "Modelagem de ameaças e análise de superfície de ataque desde o design",
+      card2Bullet2: "Hardening de infraestrutura cloud e proteção de endpoints com políticas Zero‑Trust",
+      card2Bullet3: "Revisão de código e auditorias automatizadas (SAST/DAST) integradas ao CI/CD",
       card3Title: "Agentes de IA & Automação",
       card3Desc:
         "Automatize o atendimento ao cliente no WhatsApp, Instagram, TikTok e Facebook Marketplace com agentes que respondem em segundos e gerenciam leads sem fricção.",
