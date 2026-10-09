@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ServicesBento from "@/components/ServicesBento";
+import SuccessStories from "@/components/SuccessStories";
 import TechStack from "@/components/TechStack";
 import CtaBanner from "@/components/CtaBanner";
 import ContactTerminal from "@/components/ContactTerminal";
@@ -21,6 +22,7 @@ export default function Home() {
         <Navbar onOpenContact={() => setIsContactOpen(true)} />
         <Hero onOpenContact={() => setIsContactOpen(true)} />
         <ServicesBento />
+        <SuccessStories />
         <TechStack />
         <CtaBanner />
         <ContactTerminal />

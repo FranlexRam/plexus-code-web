@@ -54,18 +54,6 @@ services: {
       card4Bullet1: "Arquitectura distribuida multiagente con comunicación segura e isolation por tarea",
       card4Bullet2: "Automatización end‑to‑end con monitoreo en tiempo real y dashboards operativos",
       card4Bullet3: "Traza auditiva de eventos y decisiones para cumplimiento regulatorio",
-      card5Title: "Automatización de Procesos (OpsFlow AI)",
-      card5Desc:
-        "Sistema multiagente integrado a CRMs (ej. HubSpot) que ingesta audios de llamadas con clientes, genera resúmenes automáticos y despliega un OpsFlow Assistant que redacta borradores de correo con contexto y adjuntos listos para revisión del CSM.",
-      card5Bullet1: "Integración multicanal (llamadas, correos, tickets) con CRMs empresariales",
-      card5Bullet2: "Análisis de audio por IA para generar resúmenes ejecutivos y detectar intención",
-      card5Bullet3: "Asistente autónomo que redacta borradores de correo con contexto y archivos adjuntos",
-      card6Title: "Fintech: AON Pay",
-      card6Desc:
-        "Caso de éxito: WebApp a la medida, CRM personalizado y un agente autónomo de IA operando 24/7 por WhatsApp para gestionar pagos y atención al cliente.",
-      card6Bullet1: "Plataforma Fintech completa con gestión de pagos, usuarios y reporting en tiempo real",
-      card6Bullet2: "CRM personalizado para gestionar relaciones con clientes y seguimiento de transacciones",
-      card6Bullet3: "Agente conversacional autónomo por WhatsApp disponible 24/7 para soporte y transacciones",
     },
     stack: {
       badge: "Ecosistema Tecnológico",
@@ -73,7 +61,30 @@ services: {
       description:
         "Seleccionamos herramientas estándar de la industria enfocadas en tipado estricto, resiliencia y escalabilidad.",
     },
-    contact: {
+    
+    successStories: {
+      title: 'Showcase de Implementación',
+      opsflow: {
+        title: 'OpsFlow AI',
+        description: 'SaaS operativo diseñado para optimizar flujos de trabalho complejos mediante agentes de IA.',
+        integrationNote: 'Nota: Caso implementado sobre HubSpot. Arquitectura agnóstica compatible con Salesforce, Zendesk y APIs REST.',
+        problem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.',
+        solution: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.',
+        result: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        ctaMessage: '¿Necesitas una solución similar? Agendemos un diagnóstico 100% gratis.',
+        ctaButton: 'Hablemos'
+      },
+      aonpay: {
+        title: 'AON Pay',
+        description: 'WebApp a la medida, CRM personalizado y un agente autónomo de IA operando 24/7 por WhatsApp.',
+        problem: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.',
+        solution: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.',
+        result: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
+        ctaMessage: '¿Necesitas una solución similar? Agendemos un diagnóstico 100% gratis.',
+        ctaButton: 'Hablemos'
+      }
+    },
+contact: {
       badge: "Enlace Directo",
       title: "Hablemos de tu Proyecto",
       description:
@@ -172,7 +183,7 @@ services: {
       services: "Services",
       work: "Our Work",
       about: "About Us",
-      cta: "Let's Talk",
+      cta: "Let\'s Talk",
     },
     hero: {
       tag: "Software Engineering & AppSec Studio",
@@ -216,18 +227,6 @@ services: {
       card4Bullet1: "Distributed multi‑agent architecture with secure communication and task isolation",
       card4Bullet2: "End‑to‑end automation with real‑time monitoring and operational dashboards",
       card4Bullet3: "Auditable event‑decision trails for regulatory compliance",
-      card5Title: "Process Automation (OpsFlow AI)",
-      card5Desc:
-        "Multi‑agent system integrated with CRMs (e.g., HubSpot) that ingests client call recordings, generates automatic summaries, and deploys an OpsFlow Assistant drafting email drafts with context and attachments ready for CSM review.",
-      card5Bullet1: "Multi‑channel integration (calls, emails, tickets) with enterprise CRMs",
-      card5Bullet2: "AI audio analysis for executive summaries and intent detection",
-      card5Bullet3: "Autonomous assistant drafting email drafts with context and file attachments",
-      card6Title: "Fintech: AON Pay",
-      card6Desc:
-        "Success case: custom WebApp, tailored CRM and an autonomous AI agent operating 24/7 on WhatsApp to handle payments and customer service.",
-      card6Bullet1: "Complete Fintech platform with payment processing, user management and real‑time reporting",
-      card6Bullet2: "Custom CRM to manage client relationships and transaction tracking",
-      card6Bullet3: "Autonomous conversational agent via WhatsApp available 24/7 for support and transactions",
     },
     stack: {
       badge: "Technology Stack",
@@ -235,9 +234,32 @@ services: {
       description:
         "We build with industry-standard tools chosen specifically for type safety, maintainability, and speed.",
     },
-    contact: {
+    
+    successStories: {
+      title: 'Implementation Showcase',
+      opsflow: {
+        title: 'OpsFlow AI',
+        description: 'Operational SaaS designed to optimize complex workflows via AI agents.',
+        integrationNote: 'Note: Case implemented on HubSpot. Agnostic architecture compatible with Salesforce, Zendesk and REST APIs.',
+        problem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.',
+        solution: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.',
+        result: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        ctaMessage: 'Need a similar solution? Let\'s schedule a 100% free diagnosis.',
+        ctaButton: 'Let\'s Talk'
+      },
+      aonpay: {
+        title: 'AON Pay',
+        description: 'Custom WebApp, tailored CRM and an autonomous AI agent operating 24/7 on WhatsApp.',
+        problem: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.',
+        solution: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.',
+        result: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
+        ctaMessage: 'Need a similar solution? Let\'s schedule a 100% free diagnosis.',
+        ctaButton: 'Let\'s Talk'
+      }
+    },
+contact: {
       badge: "Direct Communication",
-      title: "Let's Discuss Your Project",
+      title: "Let\'s Discuss Your Project",
       description:
         "Share your platform requirements. Our technical team will assess the optimal architecture for your goals.",
       name: "NAME OR ORGANIZATION",
@@ -377,19 +399,7 @@ services: {
         "Orquestração de fluxos automatizados com rastreabilidade completa para processos operacionais complexos e serviços empresariais.",
       card4Bullet1: "Arquitetura distribuída multiagente com comunicação segura e isolamento por tarefa",
       card4Bullet2: "Automação de ponta a ponta com monitoramento em tempo real e dashboards operacionais",
-      card4Bullet3: "Rastreabilidade de eventos e decisões para conformidade regulatória",
-      card5Title: "Automatização de Processos (OpsFlow AI)",
-      card5Desc:
-        "Sistema multiagente integrado a CRMs (ex. HubSpot) que ingere gravações de chamadas com clientes, gera resumos automáticos e implanta um OpsFlow Assistant que redige rascunhos de e‑mail com contexto e anexos prontos para revisão do CSM.",
-      card5Bullet1: "Integração multicanal (chamadas, e‑mails, tickets) com CRMs empresariais",
-      card5Bullet2: "Análise de áudio por IA para gerar resumos executivos e detectar intenção",
-      card5Bullet3: "Assistente autônomo que redige rascunhos de e‑mail com contexto e anexos",
-      card6Title: "Fintech: AON Pay",
-      card6Desc:
-        "Caso de sucesso: WebApp sob medida, CRM personalizado e um agente autônomo de IA operando 24/7 no WhatsApp para gerenciar pagamentos e atendimento ao cliente.",
-      card6Bullet1: "Plataforma Fintech completa com processamento de pagamentos, gestão de usuários e relatórios em tempo real",
-      card6Bullet2: "CRM personalizado para gerenciar relacionamentos com clientes e acompanhamento de transações",
-      card6Bullet3: "Agente conversacional autônomo via WhatsApp disponível 24/7 para suporte e transações",
+card4Bullet3: "Rastreabilidade de eventos e decisões para conformidade regulatória",
     },
     stack: {
       badge: "Stack Tecnológico",
@@ -397,7 +407,30 @@ services: {
       description:
         "Ferramentas modernas selecionadas por segurança de tipos, facilidade de manutenção e velocidade.",
     },
-    contact: {
+    
+    successStories: {
+      title: 'Showcase de Implementação',
+      opsflow: {
+        title: 'OpsFlow AI',
+        description: 'SaaS operacional projetado para otimizar fluxos de trabalho complexos por meio de agentes de IA.',
+        integrationNote: 'Nota: Caso implementado no HubSpot. Arquitetura agnóstica compatível com Salesforce, Zendesk e APIs REST.',
+        problem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.',
+        solution: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.',
+        result: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        ctaMessage: 'Precisa de uma solução semelhante? Vamos agendar um diagnóstico 100% gratuito.',
+        ctaButton: 'Fale Conosco'
+      },
+      aonpay: {
+        title: 'AON Pay',
+        description: 'WebApp sob medida, CRM personalizado e um agente autônomo de IA operando 24/7 no WhatsApp.',
+        problem: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.',
+        solution: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.',
+        result: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
+        ctaMessage: 'Precisa de uma solução semelhante? Vamos agendar um diagnóstico 100% gratuito.',
+        ctaButton: 'Fale Conosco'
+      }
+    },
+contact: {
       badge: "Contato Direto",
       title: "Vamos Conversar Sobre seu Projeto",
       description:
