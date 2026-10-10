@@ -3,7 +3,11 @@
 
 import { useLanguage } from "@/context/LanguageContext";
 
-export default function SuccessStories() {
+interface SuccessStoriesProps {
+  onOpenContact?: () => void;
+}
+
+export default function SuccessStories({ onOpenContact }: SuccessStoriesProps) {
   const { t } = useLanguage();
 
   const stories = [
@@ -120,7 +124,10 @@ export default function SuccessStories() {
                       Un diagnóstico técnico 100% gratuito evalúa arquitectura, presupuesto y cronograma.
                     </p>
                   </div>
-                  <button className="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-bold rounded-xl transition-colors duration-300 shadow-lg shadow-cyan-500/20 whitespace-nowrap">
+                  <button
+                    onClick={onOpenContact}
+                    className="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-bold rounded-xl transition-colors duration-300 shadow-lg shadow-cyan-500/20 whitespace-nowrap cursor-pointer"
+                  >
                     {story.ctaButton}
                   </button>
                 </div>

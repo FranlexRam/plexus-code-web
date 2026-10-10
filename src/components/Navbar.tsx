@@ -10,9 +10,10 @@ import { useLanguage } from "@/context/LanguageContext";
 
 interface NavbarProps {
   onOpenContact?: () => void;
+  onOpenAbout?: () => void;
 }
 
-export default function Navbar({ onOpenContact }: NavbarProps) {
+export default function Navbar({ onOpenContact, onOpenAbout }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useLanguage();
 
@@ -71,15 +72,17 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
           <Link href="#services" className="hover:text-cyan-400 transition-colors py-2">
             {t.nav.solutions}
           </Link>
-          <Link href="#services" className="hover:text-cyan-400 transition-colors py-2">
-            {t.nav.services}
-          </Link>
-          <Link href="#stack" className="hover:text-cyan-400 transition-colors py-2">
+          
+          <Link href="#success-stories" className="hover:text-cyan-400 transition-colors py-2">
             {t.nav.work}
           </Link>
-          <Link href="#contact" className="hover:text-cyan-400 transition-colors py-2">
+          <button
+            type="button"
+            onClick={onOpenAbout}
+            className="hover:text-cyan-400 transition-colors py-2 text-sm xl:text-base font-semibold text-slate-200 cursor-pointer bg-transparent border-none"
+          >
             {t.nav.about}
-          </Link>
+          </button>
 
           {/* Botón Hablemos */}
           <button
@@ -132,26 +135,22 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
               {t.nav.solutions}
             </Link>
             <Link
-              href="#services"
-              onClick={() => setIsOpen(false)}
-              className="text-slate-100 hover:text-cyan-400 py-3 text-xl font-bold border-b border-slate-800/60"
-            >
-              {t.nav.services}
-            </Link>
-            <Link
-              href="#stack"
+              href="#success-stories"
               onClick={() => setIsOpen(false)}
               className="text-slate-100 hover:text-cyan-400 py-3 text-xl font-bold border-b border-slate-800/60"
             >
               {t.nav.work}
             </Link>
-            <Link
-              href="#contact"
-              onClick={() => setIsOpen(false)}
-              className="text-slate-100 hover:text-cyan-400 py-3 text-xl font-bold border-b border-slate-800/60"
+            <button
+              type="button"
+              onClick={() => {
+                setIsOpen(false);
+                onOpenAbout?.();
+              }}
+              className="text-slate-100 hover:text-cyan-400 py-3 text-xl font-bold border-b border-slate-800/60 cursor-pointer bg-transparent border-none w-full text-left"
             >
               {t.nav.about}
-            </Link>
+            </button>
           </div>
 
           <div className="pt-8">

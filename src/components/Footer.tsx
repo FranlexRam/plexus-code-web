@@ -154,7 +154,7 @@ export default function Footer() {
               <span className="text-slate-800">|</span>
               <Link href="/terms" className="hover:text-slate-300 transition-colors">{t.footer.terms}</Link>
               <span className="text-slate-800">|</span>
-              <Link href="#contact" className="hover:text-slate-300 transition-colors">{t.footer.zeroTrustPolicies}</Link>
+              <Link href="/security" className="hover:text-slate-300 transition-colors">{t.footer.zeroTrustPolicies}</Link>
           </div>
         </div>
 

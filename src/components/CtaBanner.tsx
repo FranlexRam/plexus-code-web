@@ -4,7 +4,11 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { ArrowRight, Sparkles } from "lucide-react";
 
-export default function CtaBanner() {
+interface CtaBannerProps {
+  onOpenContact?: () => void;
+}
+
+export default function CtaBanner({ onOpenContact }: CtaBannerProps) {
   const { t } = useLanguage();
 
   return (
@@ -28,13 +32,14 @@ export default function CtaBanner() {
           </p>
 
           <div className="pt-4 flex justify-center">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-3 px-10 py-5 text-base sm:text-lg font-bold text-black bg-cyan-400 hover:bg-cyan-300 rounded-2xl transition-all duration-200 shadow-[0_0_35px_rgba(0,240,255,0.5)] hover:shadow-[0_0_50px_rgba(0,240,255,0.75)] transform hover:-translate-y-0.5"
+            <button
+              onClick={onOpenContact}
+              type="button"
+              className="inline-flex items-center gap-3 px-10 py-5 text-base sm:text-lg font-bold text-black bg-cyan-400 hover:bg-cyan-300 rounded-2xl transition-all duration-200 shadow-[0_0_35px_rgba(0,240,255,0.5)] hover:shadow-[0_0_50px_rgba(0,240,255,0.75)] transform hover:-translate-y-0.5 cursor-pointer"
             >
               {t.cta.button}
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </button>
           </div>
         </div>
       </div>

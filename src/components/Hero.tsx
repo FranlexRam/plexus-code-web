@@ -48,7 +48,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
               <ArrowRight className="w-5 h-5" />
             </button>
             <a
-              href="#services"
+              href="#success-stories"
               className="inline-flex items-center justify-center px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-semibold text-slate-200 hover:text-white border border-slate-800 hover:border-slate-700 bg-slate-900/60 rounded-2xl transition-all duration-200 min-h-[48px]"
             >
               {t.hero.ctaSecondary}

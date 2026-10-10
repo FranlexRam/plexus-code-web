@@ -7,7 +7,6 @@ export const translations = {
     nav: {
       home: "Inicio",
       solutions: "Soluciones",
-      services: "Servicios",
       work: "Nuestro Trabajo",
       about: "Sobre Nosotros",
       cta: "Hablemos",
@@ -180,7 +179,6 @@ contact: {
     nav: {
       home: "Home",
       solutions: "Solutions",
-      services: "Services",
       work: "Our Work",
       about: "About Us",
       cta: "Let\'s Talk",
@@ -353,7 +351,6 @@ cta: {
     nav: {
       home: "Início",
       solutions: "Soluções",
-      services: "Serviços",
       work: "Nosso Trabalho",
       about: "Sobre Nós",
       cta: "Fale Conosco",

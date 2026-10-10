@@ -9,27 +9,34 @@ import ServicesBento from "@/components/ServicesBento";
 import SuccessStories from "@/components/SuccessStories";
 import TechStack from "@/components/TechStack";
 import CtaBanner from "@/components/CtaBanner";
-import ContactTerminal from "@/components/ContactTerminal";
 import ContactModal from "@/components/ContactModal";
+import AboutModal from "@/components/AboutModal";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
 
   return (
     <LanguageProvider>
       <main className="relative min-h-screen bg-[#06090f] text-slate-100 selection:bg-cyan-400 selection:text-black overflow-x-clip">
-        <Navbar onOpenContact={() => setIsContactOpen(true)} />
+        <Navbar 
+          onOpenContact={() => setIsContactOpen(true)} 
+          onOpenAbout={() => setIsAboutOpen(true)} 
+        />
         <Hero onOpenContact={() => setIsContactOpen(true)} />
         <ServicesBento />
-        <SuccessStories />
+        <SuccessStories onOpenContact={() => setIsContactOpen(true)} />
         <TechStack />
-        <CtaBanner />
-        <ContactTerminal />
+        <CtaBanner onOpenContact={() => setIsContactOpen(true)} />
         <Footer />
         <ContactModal
           isOpen={isContactOpen}
           onClose={() => setIsContactOpen(false)}
+        />
+        <AboutModal
+          isOpen={isAboutOpen}
+          onClose={() => setIsAboutOpen(false)}
         />
       </main>
     </LanguageProvider>
