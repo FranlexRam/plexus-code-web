@@ -116,8 +116,8 @@ Objetivo: que el sitio comunique con precisión **qué vende Plexus Code**. Todo
 - [x] **F2-04** **Automatización de Procesos**: SaaS operativos; ficha de **OpsFlow AI**. **Completada** (2026-10-08).
 - [x] **F2-05** **Fintech**: ficha de **AON Pay** (agentes conversacionales). **Completada** (2026-10-08).
 - [x] **F2-06** Reescritura profesional del copy en **es / en / pt** (Hero, servicios, CTA, TechStack) con paridad total y sin métricas sin respaldo.
-- [ ] **F2-07** Corregir enlaces oficiales: LinkedIn público de la empresa, Instagram oficial, TikTok, y verificar el correo `contact@plexuscode.com`. Quitar el enlace de administración.
-- [ ] **F2-08** Corregir el Footer (versión de Next.js, enlaces rotos) y crear páginas reales de **Privacidad** y **Términos**.
+- [x] **F2-07** Corregir enlaces oficiales: LinkedIn público de la empresa, Instagram oficial, TikTok, y verificar el correo `contact@plexuscode.com`. Quitar el enlace de administración.
+- [x] **F2-08** Corregir el Footer (versión de Next.js, enlaces rotos) y crear páginas reales de **Privacidad** y **Términos**.
 - [ ] **F2-09** SEO técnico: `metadata` por idioma, Open Graph, `robots`, `sitemap`, datos estructurados `Organization`, y `<html lang>` dinámico.
 - [ ] **F2-10** Dominio verificado en Resend y cambio del remitente de producción.
 
