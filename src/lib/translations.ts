@@ -12,18 +12,18 @@ export const translations = {
       about: "Sobre Nosotros",
       cta: "Hablemos",
     },
-    hero: {
-      tag: "Software Engineering & AppSec Studio",
-      titleLine1: "Secure by design.",
-      titleLine2: "Scalable by default.",
+hero: {
+      tag: "SOFTWARE B2B A LA MEDIDA",
+      titleLine1: "Ingeniería de Software e Inteligencia Artificial",
+      titleLine2: "para Operaciones Críticas.",
       description:
-        "Desarrollo de software a medida, arquitecturas defensivas y agentes autónomos de IA. Convertimos requerimientos complejos en plataformas robustas preparadas para escalar.",
-      ctaPrimary: "Agenda una llamada",
-      ctaSecondary: "Explorar Soluciones",
-      badgeLive: "SISTEMA SEGURO",
+        "Diseñamos y desplegamos plataformas SaaS, infraestructura segura y agentes autónomos que eliminan cuellos de botella y automatizan tu operación sin fricciones.",
+      ctaPrimary: "Agendar Diagnóstico",
+      ctaSecondary: "Ver Casos de Éxito",
+      badgeLive: "SOFTWARE B2B A LA MEDIDA",
       metric1: "LATENCIA GLOBAL",
       metric1Val: "18ms (Edge)",
-      metric2: "POLÍTICA ZERO-TRUST",
+      metric2: "POLITICA ZERO-TRUST",
       metric2Val: "Activa & Blindada",
       metric3: "AGENTES IA",
       metric3Val: "Operacionales",
@@ -56,10 +56,10 @@ services: {
       card4Bullet3: "Traza auditiva de eventos y decisiones para cumplimiento regulatorio",
     },
     stack: {
-      badge: "Ecosistema Tecnológico",
-      title: "Tecnologías Robustas Probadas en Producción",
+      badge: "STACK TECNOLÓGICO",
+      title: "Arquitecturas de Alta Disponibilidad",
       description:
-        "Seleccionamos herramientas estándar de la industria enfocadas en tipado estricto, resiliencia y escalabilidad.",
+        "Construimos con tecnologías probadas en producción, diseñadas para escalabilidad masiva, concurrencia extrema y seguridad impenetrable.",
     },
     
     successStories: {
@@ -68,18 +68,18 @@ services: {
         title: 'OpsFlow AI',
         description: 'SaaS operativo diseñado para optimizar flujos de trabalho complejos mediante agentes de IA.',
         integrationNote: 'Nota: Caso implementado sobre HubSpot. Arquitectura agnóstica compatible con Salesforce, Zendesk y APIs REST.',
-        problem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.',
-        solution: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.',
-        result: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        problem: 'Los equipos de atención al cliente (CSM) pierden horas valiosas documentando llamadas, analizando intenciones y redactando seguimientos manuales en el CRM.',
+        solution: 'Un Sistema Multiagente entrenado a la medida de la empresa. Al colgar la llamada, la IA genera el resumen detallado en segundos, asigna tareas automáticas para no perder el hilo, y redacta borradores de correo precisos, incluyendo contexto y archivos adjuntos listos para enviar.',
+        result: 'Cero fricción operativa. El equipo recupera su tiempo y energía para enfocarse en lo que realmente aporta valor: generar conexiones humanas auténticas y brindar un soporte impecable, garantizando que ningún cliente quede desatendido.',
         ctaMessage: '¿Necesitas una solución similar? Agendemos un diagnóstico 100% gratis.',
         ctaButton: 'Hablemos'
       },
       aonpay: {
         title: 'AON Pay',
         description: 'WebApp a la medida, CRM personalizado y un agente autónomo de IA operando 24/7 por WhatsApp.',
-        problem: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.',
-        solution: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.',
-        result: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
+        problem: 'Gestionar envíos de remesas y activos digitales en 7 países generaba cuellos de botella. La directiva operaba sin métricas precisas de ingresos o rutas de cambio, y se perdían clientes potenciales por falta de respuestas inmediatas en WhatsApp por el alto volumen de consultas.',
+        solution: 'Ingeniería de tres pilares a la medida: una WebApp ágil para los usuarios, un CRM financiero avanzado para la empresa, y un Agente Conversacional de IA operando 24/7 en WhatsApp. Las dueñas duermen; su negocio, no.',
+        result: 'Crecimiento integral y clientes agradecidos. La rapidez de la WebApp y la atención instantánea del agente dispararon la entrada de nuevos usuarios y los ingresos. Simultáneamente, el CRM otorga a la directiva control total y en tiempo real sobre la rentabilidad de cada país y cliente.',
         ctaMessage: '¿Necesitas una solución similar? Agendemos un diagnóstico 100% gratis.',
         ctaButton: 'Hablemos'
       }
@@ -148,10 +148,10 @@ contact: {
       },
     },
     cta: {
-      badge: "Escala tu Producto Hoy",
-      title: "¿Listo para construir software seguro y escalable?",
-      description: "Cuéntanos sobre tu visión y diseñemos juntos una plataforma robusta preparada para el futuro.",
-      button: "Comenzar Ahora",
+      badge: "EL SIGUIENTE PASO",
+      title: "¿Listo para automatizar tu operación?",
+      description: "Agendemos un diagnóstico técnico 100% gratuito. Evaluaremos tu arquitectura actual, definiremos presupuestos y trazaremos un cronograma claro.",
+      button: "Hablemos Ahora",
     },
     footer: {
       solutionsHeading: "Soluciones",
@@ -186,14 +186,14 @@ contact: {
       cta: "Let\'s Talk",
     },
     hero: {
-      tag: "Software Engineering & AppSec Studio",
-      titleLine1: "Secure by design.",
-      titleLine2: "Scalable by default.",
+      tag: "CUSTOM B2B SOFTWARE",
+      titleLine1: "Software Engineering & Artificial Intelligence",
+      titleLine2: "for Critical Operations.",
       description:
-        "Custom software development, defensive architectures, and autonomous AI agents. Transforming complex requirements into enterprise-grade platforms.",
-      ctaPrimary: "Book a Call",
-      ctaSecondary: "Explore Solutions",
-      badgeLive: "SYSTEM SECURE",
+        "We design and deploy SaaS platforms, secure infrastructure, and autonomous agents that eliminate bottlenecks and automate your operations seamlessly.",
+      ctaPrimary: "Schedule Diagnosis",
+      ctaSecondary: "View Success Stories",
+      badgeLive: "CUSTOM B2B SOFTWARE",
       metric1: "GLOBAL LATENCY",
       metric1Val: "18ms (Edge)",
       metric2: "ZERO-TRUST POLICY",
@@ -229,10 +229,10 @@ contact: {
       card4Bullet3: "Auditable event‑decision trails for regulatory compliance",
     },
     stack: {
-      badge: "Technology Stack",
-      title: "Battle-Tested Production Stack",
+      badge: "TECHNOLOGY STACK",
+      title: "High-Availability Architectures",
       description:
-        "We build with industry-standard tools chosen specifically for type safety, maintainability, and speed.",
+        "We build with production-proven technologies, engineered for massive scalability, extreme concurrency, and impenetrable security.",
     },
     
     successStories: {
@@ -241,18 +241,18 @@ contact: {
         title: 'OpsFlow AI',
         description: 'Operational SaaS designed to optimize complex workflows via AI agents.',
         integrationNote: 'Note: Case implemented on HubSpot. Agnostic architecture compatible with Salesforce, Zendesk and REST APIs.',
-        problem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.',
-        solution: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.',
-        result: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        problem: 'Customer Success Management (CSM) teams lose valuable hours documenting calls, analyzing intent, and manually drafting follow-ups in the CRM.',
+        solution: 'A custom-trained Multi-Agent System. Upon ending a call, the AI generates a detailed summary in seconds, automatically assigns tasks to maintain the thread, and drafts precise emails, including context and ready-to-send attachments.',
+        result: 'Zero operational friction. The team reclaims their time and energy to focus on what truly adds value: generating authentic human connections and delivering flawless support, ensuring no client is left unattended.',
         ctaMessage: 'Need a similar solution? Let\'s schedule a 100% free diagnosis.',
         ctaButton: 'Let\'s Talk'
       },
       aonpay: {
         title: 'AON Pay',
         description: 'Custom WebApp, tailored CRM and an autonomous AI agent operating 24/7 on WhatsApp.',
-        problem: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.',
-        solution: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.',
-        result: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
+        problem: 'Managing remittance and digital asset transfers across 7 countries created bottlenecks. The board operated without precise metrics on revenue or exchange routes, and potential clients were lost due to a lack of immediate responses on WhatsApp given the high volume of inquiries.',
+        solution: 'Custom three-pillar engineering: an agile WebApp for users, an advanced financial CRM for the company, and a Conversational AI Agent operating 24/7 on WhatsApp. The owners sleep; their business does not.',
+        result: 'Comprehensive growth and grateful clients. The speed of the WebApp and the instant attention from the agent skyrocketed the onboarding of new users and revenue. Simultaneously, the CRM grants the board total, real-time control over the profitability of each country and client.',
         ctaMessage: 'Need a similar solution? Let\'s schedule a 100% free diagnosis.',
         ctaButton: 'Let\'s Talk'
       }
@@ -320,11 +320,11 @@ contact: {
         server: "Server validation error. Please check your inputs.",
       },
     },
-    cta: {
-      badge: "Scale Your Product Today",
-      title: "Ready to build secure and scalable software?",
-      description: "Share your vision and let's design together a robust platform ready for the future.",
-      button: "Start Now",
+cta: {
+      badge: "THE NEXT STEP",
+      title: "Ready to automate your operations?",
+      description: "Let\'s schedule a 100% free technical diagnosis. We will evaluate your current architecture, define budgets, and outline a clear timeline.",
+      button: "Let\'s Talk Now",
     },
     footer: {
       solutionsHeading: "Solutions",
@@ -359,14 +359,14 @@ contact: {
       cta: "Fale Conosco",
     },
     hero: {
-      tag: "Software Engineering & AppSec Studio",
-      titleLine1: "Seguro por design.",
-      titleLine2: "Escalável por padrão.",
+      tag: "SOFTWARE B2B SOB MEDIDA",
+      titleLine1: "Engenharia de Software e Inteligência Artificial",
+      titleLine2: "para Operações Críticas.",
       description:
-        "Desenvolvimento de software sob medida, arquiteturas defensivas e agentes autônomos de IA. Transformamos demandas complexas em plataformas escaláveis.",
-      ctaPrimary: "Agendar Reunião",
-      ctaSecondary: "Explorar Soluções",
-      badgeLive: "SISTEMA SEGURO",
+        "Projetamos e implantamos plataformas SaaS, infraestrutura segura e agentes autônomos que eliminam gargalos e automatizam sua operação sem atritos.",
+      ctaPrimary: "Agendar Diagnóstico",
+      ctaSecondary: "Ver Casos de Sucesso",
+      badgeLive: "SOFTWARE B2B SOB MEDIDA",
       metric1: "LATÊNCIA GLOBAL",
       metric1Val: "18ms (Edge)",
       metric2: "POLÍTICA ZERO-TRUST",
@@ -402,10 +402,10 @@ services: {
 card4Bullet3: "Rastreabilidade de eventos e decisões para conformidade regulatória",
     },
     stack: {
-      badge: "Stack Tecnológico",
-      title: "Tecnologias Robustas e Consolidadas",
+      badge: "STACK DE TECNOLOGIA",
+      title: "Arquiteturas de Alta Disponibilidade",
       description:
-        "Ferramentas modernas selecionadas por segurança de tipos, facilidade de manutenção e velocidade.",
+        "Construímos com tecnologias comprovadas em produção, projetadas para escalabilidade maciça, concorrência extrema e segurança impenetrável.",
     },
     
     successStories: {
@@ -414,18 +414,18 @@ card4Bullet3: "Rastreabilidade de eventos e decisões para conformidade regulat�
         title: 'OpsFlow AI',
         description: 'SaaS operacional projetado para otimizar fluxos de trabalho complexos por meio de agentes de IA.',
         integrationNote: 'Nota: Caso implementado no HubSpot. Arquitetura agnóstica compatível com Salesforce, Zendesk e APIs REST.',
-        problem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.',
-        solution: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.',
-        result: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        problem: 'As equipes de Sucesso do Cliente (CSM) perdem horas valiosas documentando chamadas, analisando intenções e redigindo acompanhamentos manuais no CRM.',
+        solution: 'Um Sistema Multiagente treinado sob medida para a empresa. Ao encerrar a chamada, a IA gera o resumo detalhado em segundos, atribui tarefas automáticas para não perder o fio da meada e redige rascunhos de e-mail precisos, incluindo contexto e anexos prontos para enviar.',
+        result: 'Zero atrito operacional. A equipe recupera seu tempo e energia para focar no que realmente agrega valor: gerar conexões humanas autenticas e fornecer um suporte impecável, garantindo que nenhum cliente fique desatendido.',
         ctaMessage: 'Precisa de uma solução semelhante? Vamos agendar um diagnóstico 100% gratuito.',
         ctaButton: 'Fale Conosco'
       },
       aonpay: {
         title: 'AON Pay',
         description: 'WebApp sob medida, CRM personalizado e um agente autônomo de IA operando 24/7 no WhatsApp.',
-        problem: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.',
-        solution: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.',
-        result: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
+        problem: 'Gerenciar envios de remessas e ativos digitais em 7 países gerava gargalos. A diretoria operava sem métricas precisas de receita ou rotas de câmbio, e potenciais clientes eram perdidos por falta de respostas imediatas no WhatsApp devido ao alto volume de consultas.',
+        solution: 'Engenharia de três pilares sob medida: um WebApp ágil para os usuários, um CRM financeiro avançado para a empresa e um Agente Conversacional de IA operando 24/7 no WhatsApp. As donas dormem; o negócio delas, não.',
+        result: 'Crescimento integral e clientes agradecidos. A rapidez do WebApp e o atendimento instantâneo do agente dispararam a entrada de novos usuários e a receita. Simultaneamente, o CRM concede à diretoria controle total e em tempo real sobre a rentabilidade de cada país e cliente.',
         ctaMessage: 'Precisa de uma solução semelhante? Vamos agendar um diagnóstico 100% gratuito.',
         ctaButton: 'Fale Conosco'
       }
@@ -494,10 +494,10 @@ contact: {
       },
     },
     cta: {
-      badge: "Escale seu Produto Hoje",
-      title: "Pronto para construir software seguro e escalável?",
-      description: "Compartilhe sua visão e vamos projetar juntos uma plataforma robusta preparada para o futuro.",
-      button: "Começar Agora",
+      badge: "O PRÓXIMO PASSO",
+      title: "Pronto para automatizar suas operações?",
+      description: "Vamos agendar um diagnóstico técnico 100% gratuito. Avaliaremos sua arquitetura atual, definiremos orçamentos e traçaremos um cronograma claro.",
+      button: "Fale Conosco Agora",
     },
     footer: {
       solutionsHeading: "Soluções",
