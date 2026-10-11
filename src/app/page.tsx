@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ServicesBento from "@/components/ServicesBento";
 import SuccessStories from "@/components/SuccessStories";
+import ProcessSteps from "@/components/ProcessSteps";
 import TechStack from "@/components/TechStack";
 import CtaBanner from "@/components/CtaBanner";
 import ContactModal from "@/components/ContactModal";
@@ -27,6 +28,7 @@ export default function Home() {
         <Hero onOpenContact={() => setIsContactOpen(true)} />
         <ServicesBento />
         <SuccessStories onOpenContact={() => setIsContactOpen(true)} />
+        <ProcessSteps />
         <TechStack />
         <CtaBanner onOpenContact={() => setIsContactOpen(true)} />
         <Footer />

@@ -135,7 +135,7 @@ Integrar dinamismo premium (Framer Motion / GSAP) en SuccessStories.tsx y Servic
 
 **Nuevas integraciones (estética cyber, textos comerciales claros):**
 
-- [ ] **F3-01** **Layout de "3 Pasos para Empezar"** – tarjetas Bento apiladas verticalmente con tipografía sans-serif de alto impacto (`extrabold`, `tracking‑tight`, `text‑5xl/6xl`). Lenguaje de negocio claro: (1) Diagnóstico y Estrategia, (2) Construcción a Medida, (3) Tu Negocio en Automático.
+- [x] **F3-01** **Layout de "3 Pasos para Empezar"** – tarjetas Bento apiladas verticalmente con tipografía sans-serif de alto impacto (`extrabold`, `tracking‑tight`, `text‑5xl/6xl`). Lenguaje de negocio claro: (1) Diagnóstico y Estrategia, (2) Construcción a Medida, (3) Tu Negocio en Automático.
 - [ ] **F3-02** **Widget de Chat Persistente** – burbuja flotante fija (bottom‑right) que acompañe al usuario durante el scroll y active el asistente al hacer clic.
 - [ ] **F3-03** **Asistente de Voz y Terminal Interactiva** – interfaz tipo consola/orbe holográfico en el chat, con integración futura de Web Speech API y Text‑to‑Speech (ej. ElevenLabs) para interacciones de voz, aclarando nuestras políticas Zero Trust.
 - [ ] **F3-04** **Agendamiento Integrado Nativo** – modal con calendario construido en React/Tailwind (vía API de Cal.com/Calendly), sin usar iframes externos.

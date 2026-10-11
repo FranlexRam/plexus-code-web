@@ -1,6 +1,12 @@
 // src/app/layout.tsx
 import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-jakarta',
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -86,7 +92,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className="bg-[#06090f] text-slate-100 selection:bg-cyan-400 selection:text-black">
+      <body className={`${jakarta.variable} font-sans antialiased bg-[#06090f] text-slate-300 selection:bg-cyan-400 selection:text-black`}>
         {children}
       </body>
     </html>
