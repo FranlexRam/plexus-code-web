@@ -2,6 +2,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { Activity, Code2, Rocket } from "lucide-react";
@@ -86,25 +87,15 @@ export default function ProcessSteps() {
           style={{ opacity: cardOpacity, y: cardY }}
         >
           {/* Giant Watermark Number in Background */}
-          <span className="absolute top-0 right-4 md:top-auto md:bottom-2 md:right-8 text-[120px] md:text-[180px] font-black text-slate-600/40 leading-none select-none pointer-events-none z-0">
+          <span className="absolute top-4 right-8 text-8xl md:text-9xl font-black text-white/3 select-none pointer-events-none">
             {index + 1}
           </span>
           
           {/* Content Container (above watermark) */}
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 md:gap-12 items-center">
             {/* Left Column - Text Content */}
             <div className="flex flex-col">
-              {/* Step Indicator */}
-              <div className="flex items-center gap-3 mb-3">
-                <motion.div 
-                  className="w-3 h-3 rounded-full bg-cyan-400"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ repeat: Infinity, duration: 2, delay: index * 0.5 }}
-                />
-                <span className="text-sm md:text-base font-bold tracking-widest uppercase text-cyan-400">
-                  {step.label}
-                </span>
-              </div>
+              
             
             {/* Step Title */}
             <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6 tracking-tight">
@@ -117,7 +108,7 @@ export default function ProcessSteps() {
             </p>
             
             {/* Key Points */}
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
               {step.keyPoints.map((keyPoint, keyIndex) => (
                 <div key={keyIndex} className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-xs font-bold shrink-0 mt-0.5">
@@ -133,7 +124,24 @@ export default function ProcessSteps() {
             
             {/* Right Column - Future 3D Art */}
             <div className="hidden md:flex relative justify-center items-center w-full min-h-[250px]">
-              {/* Empty placeholder for 3D artwork */}
+              {/* Cyber-Cyan glow background */}
+              <div className="absolute inset-0 bg-cyan-500/20 blur-[100px] rounded-full scale-150 z-0" />
+              
+              {/* Floating 3D Render with dynamic image */}
+              <motion.div
+                className="relative z-10 w-72 h-72 flex justify-center items-center"
+                animate={{ y: [-15, 5, -15] }}
+                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: index * 0.4 }}
+              >
+                <Image 
+                  src={`/paso-${index + 1}.png`}
+                  alt={`Ilustración del Paso ${index + 1}`}
+                  width={400}
+                  height={400}
+                  className="object-contain drop-shadow-[0_0_30px_rgba(6,182,212,0.3)]"
+                  priority={index === 0}
+                />
+              </motion.div>
             </div>
           </div> {/* Close grid container */}
         </motion.div>
@@ -144,7 +152,7 @@ export default function ProcessSteps() {
   
 
   return (
-    <section className="relative max-w-5xl mx-auto py-24 px-4 text-slate-300">
+    <section className="relative max-w-6xl mx-auto py-24 px-4 text-slate-300">
       
       {/* Header */}
       <div className="text-center mb-16">
