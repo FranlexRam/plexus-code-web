@@ -68,72 +68,61 @@ export default function ProcessSteps() {
     const iconColor = useTransform(scrollYProgress, [0, 0.2], ["#64748b", "#ffffff"]); // slate-500 to white
     
     return (
-      <div ref={itemRef} className="relative mb-12 md:mb-16 last:mb-0">
-        {/* Icon Node - Perfectly centered on the 1px bar (ALWAYS VISIBLE) */}
-        <motion.div 
-          className="absolute -left-[70px] md:-left-[96px] top-12 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-xl z-30 border-2 bg-slate-900"
-          style={{ 
-            backgroundColor: iconBg,
-            borderColor: iconBorder, 
-            color: iconColor,
-          }}
+      <div ref={itemRef} className="relative mb-12 md:mb-16 last:mb-0 w-full">
+        {/* Icon Node */}
+        <motion.div
+          className="absolute -left-[48px] sm:-left-[60px] md:-left-[84px] top-12 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-xl z-30 border-2 bg-slate-900"
+          style={{ backgroundColor: iconBg, borderColor: iconBorder, color: iconColor }}
         >
-          <step.icon className="w-7 h-7 md:w-8 md:h-8" />
+          <step.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
         </motion.div>
-        
-        {/* Glass Card Content (with opacity animation) */}
-        <motion.div 
-          className="glass-card rounded-2xl p-8 md:p-12 border border-slate-800 bg-slate-900/30 backdrop-blur-sm relative"
+
+        {/* GLAS CARD - ENVUELVE TODO EL CONTENIDO */}
+        <motion.div
+          className="glass-card rounded-2xl p-6 sm:p-8 md:p-12 border border-slate-800 bg-slate-900/30 backdrop-blur-sm relative overflow-hidden w-full"
           style={{ opacity: cardOpacity, y: cardY }}
         >
-          {/* Giant Watermark Number in Background */}
-          <span className="absolute top-4 right-8 text-8xl md:text-9xl font-black text-white/3 select-none pointer-events-none">
+          {/* Watermark (Oculto en móvil) */}
+          <span className="hidden md:block absolute top-4 right-8 text-8xl md:text-9xl font-black text-white/3 select-none pointer-events-none">
             {index + 1}
           </span>
-          
-          {/* Content Container (above watermark) */}
+
+          {/* Grid Container */}
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 md:gap-12 items-center">
-            {/* Left Column - Text Content */}
-            <div className="flex flex-col">
-              
-            
-            {/* Step Title */}
-            <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6 tracking-tight">
-              {step.title}
-            </h3>
-            
-            {/* Step Description */}
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed mb-8">
-              {step.description}
-            </p>
-            
-            {/* Key Points */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-              {step.keyPoints.map((keyPoint, keyIndex) => (
-                <div key={keyIndex} className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-xs font-bold shrink-0 mt-0.5">
-                    ✓
+
+            {/* Left Column - Texto */}
+            <div className="flex flex-col w-full">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">
+                {step.title}
+              </h3>
+              <p className="text-base md:text-lg text-slate-300 leading-relaxed mb-8">
+                {step.description}
+              </p>
+
+              {/* Key Points */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                {step.keyPoints.map((keyPoint, keyIndex) => (
+                  <div key={keyIndex} className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-xs font-bold shrink-0 mt-0.5">
+                      ✓
+                    </div>
+                    <span className="text-base md:text-lg text-slate-300">
+                      {keyPoint}
+                    </span>
                   </div>
-                  <span className="text-base md:text-lg text-slate-300">
-                    {keyPoint}
-                  </span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-            </div> {/* Close left column */}
-            
+
             {/* Right Column - Future 3D Art */}
             <div className="hidden md:flex relative justify-center items-center w-full min-h-[250px]">
-              {/* Cyber-Cyan glow background */}
               <div className="absolute inset-0 bg-cyan-500/20 blur-[100px] rounded-full scale-150 z-0" />
-              
-              {/* Floating 3D Render with dynamic image */}
               <motion.div
-                className="relative z-10 w-72 h-72 flex justify-center items-center"
+                className="relative z-10 w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 flex justify-center items-center mx-auto mt-8 lg:mt-0"
                 animate={{ y: [-15, 5, -15] }}
                 transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: index * 0.4 }}
               >
-                <Image 
+                <Image
                   src={`/paso-${index + 1}.png`}
                   alt={`Ilustración del Paso ${index + 1}`}
                   width={400}
@@ -143,7 +132,7 @@ export default function ProcessSteps() {
                 />
               </motion.div>
             </div>
-          </div> {/* Close grid container */}
+          </div>
         </motion.div>
       </div>
     );
@@ -152,7 +141,7 @@ export default function ProcessSteps() {
   
 
   return (
-    <section className="relative max-w-6xl mx-auto py-24 px-4 text-slate-300">
+    <section className="relative max-w-6xl mx-auto py-24 px-4 sm:px-6 md:px-8 overflow-x-hidden text-slate-300">
       
       {/* Header */}
       <div className="text-center mb-16">
@@ -186,7 +175,7 @@ export default function ProcessSteps() {
         />
 
         {/* Steps Container */}
-        <div className="flex flex-col w-full pl-20 md:pl-28">
+        <div className="flex flex-col w-full max-w-full pl-16 sm:pl-20 md:pl-28 pr-4 sm:pr-8 md:pr-0">
           {steps.map((step, index) => (
             <StepItem 
               key={index} 
