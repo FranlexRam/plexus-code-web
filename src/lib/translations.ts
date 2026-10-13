@@ -11,7 +11,7 @@ export const translations = {
       about: "Sobre Nosotros",
       cta: "Hablemos",
     },
-hero: {
+    hero: {
       tag: "SOFTWARE B2B A LA MEDIDA",
       titleLine1: "Ingeniería de Software e Inteligencia Artificial",
       titleLine2: "para Operaciones Críticas.",
@@ -27,7 +27,7 @@ hero: {
       metric3: "AGENTES IA",
       metric3Val: "Operacionales",
     },
-services: {
+    services: {
       badge: "Capacidades Técnicas",
       title: "Soluciones de Ingeniería para Sistemas Críticos",
       description:
@@ -60,7 +60,6 @@ services: {
       description:
         "Construimos con tecnologías probadas en producción, diseñadas para escalabilidad masiva, concurrencia extrema y seguridad impenetrable.",
     },
-    
     successStories: {
       title: 'Showcase de Implementación',
       opsflow: {
@@ -107,7 +106,7 @@ services: {
       keyPoint9: "¡Y mucho más!",
       footer: "Cada paso está diseñado para entregar valor medible y resultados ágiles, sin fricción.",
     },
-contact: {
+    contact: {
       badge: "Enlace Directo",
       title: "Hablemos de tu Proyecto",
       description:
@@ -124,12 +123,10 @@ contact: {
       errorGeneric: "Ocurrió un error. Por favor, intenta nuevamente más tarde.",
       errorValidation: "Por favor, corrige los errores en el formulario.",
       rights: "© 2026 PLEXUS CODE. Todos los derechos reservados.",
-      // Tarjeta de contacto
       cardEmailLabel: "CORREO DIRECTO",
       cardEmailValue: "contact@plexuscode.com",
       cardSecurityLabel: "GARANTÍA TÉCNICA",
       cardSecurityMotto: "Secure by design. Scalable by default.",
-      // Placeholders
       namePlaceholder: "Ej. Franlex Ramírez",
       emailPlaceholder: "tu@empresa.com",
       messagePlaceholder: "Detalles sobre el proyecto, arquitectura requerida o requerimientos de seguridad...",
@@ -198,6 +195,17 @@ contact: {
       terms: "TÉRMINOS",
       zeroTrustPolicies: "POLÍTICAS ZERO TRUST",
     },
+    chatWidget: {
+      ariaLabel: "Abrir asistente de IA",
+      botName: "Cyrus AI",
+      status: "En línea y listo",
+      inputPlaceholder: "Escribe tu mensaje...",
+      connecting: "Conectando con motor de Inteligencia Artificial...",
+      tooltip: "¡Hola! ¿Tienes alguna pregunta? Habla con nosotros por aquí.",
+      selectionTitle: "¿De qué forma quieres conversar?",
+      optionText: "Chat por texto",
+      optionVoice: "Asistencia por voz"
+    }
   },
   en: {
     nav: {
@@ -205,7 +213,7 @@ contact: {
       solutions: "Solutions",
       work: "Our Work",
       about: "About Us",
-      cta: "Let\'s Talk",
+      cta: "Let's Talk",
     },
     hero: {
       tag: "CUSTOM B2B SOFTWARE",
@@ -256,7 +264,6 @@ contact: {
       description:
         "We build with production-proven technologies, engineered for massive scalability, extreme concurrency, and impenetrable security.",
     },
-    
     successStories: {
       title: 'Implementation Showcase',
       opsflow: {
@@ -303,9 +310,9 @@ contact: {
       keyPoint9: "And much more!",
       footer: "Every step is designed to deliver measurable value and agile results, without friction.",
     },
-contact: {
+    contact: {
       badge: "Direct Communication",
-      title: "Let\'s Discuss Your Project",
+      title: "Let's Discuss Your Project",
       description:
         "Share your platform requirements. Our technical team will assess the optimal architecture for your goals.",
       name: "NAME OR ORGANIZATION",
@@ -320,12 +327,10 @@ contact: {
       errorGeneric: "An error occurred. Please try again later.",
       errorValidation: "Please correct the errors in the form.",
       rights: "© 2026 PLEXUS CODE. All rights reserved.",
-      // Contact card
       cardEmailLabel: "DIRECT EMAIL",
       cardEmailValue: "contact@plexuscode.com",
       cardSecurityLabel: "TECHNICAL GUARANTEE",
       cardSecurityMotto: "Secure by design. Scalable by default.",
-      // Placeholders
       namePlaceholder: "e.g., Alexander Wright",
       emailPlaceholder: "contact@company.com",
       messagePlaceholder: "Outline project scope, technical stack requirements or deployment timeline...",
@@ -366,11 +371,11 @@ contact: {
         server: "Server validation error. Please check your inputs.",
       },
     },
-cta: {
+    cta: {
       badge: "THE NEXT STEP",
       title: "Ready to automate your operations?",
-      description: "Let\'s schedule a 100% free technical diagnosis. We will evaluate your current architecture, define budgets, and outline a clear timeline.",
-      button: "Let\'s Talk Now",
+      description: "Let's schedule a 100% free technical diagnosis. We will evaluate your current architecture, define budgets, and outline a clear timeline.",
+      button: "Let's Talk Now",
     },
     footer: {
       solutionsHeading: "Solutions",
@@ -394,6 +399,17 @@ cta: {
       terms: "TERMS",
       zeroTrustPolicies: "ZERO-TRUST POLICIES",
     },
+    chatWidget: {
+      ariaLabel: "Open AI assistant",
+      botName: "Cyrus AI",
+      status: "Online and ready",
+      inputPlaceholder: "Type your message...",
+      connecting: "Connecting to Artificial Intelligence engine...",
+      tooltip: "Hello! Have any questions? Talk to us right here.",
+      selectionTitle: "How would you like to connect?",
+      optionText: "Live Text Chat",
+      optionVoice: "Voice Assistance"
+    }
   },
   pt: {
     nav: {
@@ -419,7 +435,7 @@ cta: {
       metric3: "AGENTES IA",
       metric3Val: "Operacionais",
     },
-services: {
+    services: {
       badge: "Capacidades Técnicas",
       title: "Soluções de Engenharia para Sistemas Críticos",
       description:
@@ -444,7 +460,7 @@ services: {
         "Orquestração de fluxos automatizados com rastreabilidade completa para processos operacionais complexos e serviços empresariais.",
       card4Bullet1: "Arquitetura distribuída multiagente com comunicação segura e isolamento por tarefa",
       card4Bullet2: "Automação de ponta a ponta com monitoramento em tempo real e dashboards operacionais",
-card4Bullet3: "Rastreabilidade de eventos e decisões para conformidade regulatória",
+      card4Bullet3: "Rastreabilidade de eventos e decisões para conformidade regulatória",
     },
     stack: {
       badge: "STACK DE TECNOLOGIA",
@@ -452,7 +468,6 @@ card4Bullet3: "Rastreabilidade de eventos e decisões para conformidade regulat�
       description:
         "Construímos com tecnologias comprovadas em produção, projetadas para escalabilidade maciça, concorrência extrema e segurança impenetrável.",
     },
-    
     successStories: {
       title: 'Showcase de Implementação',
       opsflow: {
@@ -475,7 +490,7 @@ card4Bullet3: "Rastreabilidade de eventos e decisões para conformidade regulat�
         ctaButton: 'Fale Conosco'
       }
     },
-process: {
+    process: {
       badge: "COMO TRABALHAMOS",
       title: "3 Passos para Começar",
       subtitle: "Fluxo metodológico que transforma processos manuais em sistemas autônomos com rastreabilidade completa.",
@@ -499,7 +514,7 @@ process: {
       keyPoint9: "E muito mais!",
       footer: "Cada passo é projetado para entregar valor mensurável e resultados ágeis, sem atrito.",
     },
-contact: {
+    contact: {
       badge: "Contato Direto",
       title: "Vamos Conversar Sobre seu Projeto",
       description:
@@ -516,12 +531,10 @@ contact: {
       errorGeneric: "Ocorreu um erro. Por favor, tente novamente mais tarde.",
       errorValidation: "Por favor, corrija os erros no formulário.",
       rights: "© 2026 PLEXUS CODE. Todos os derechos reservados.",
-      // Cartão de contato
       cardEmailLabel: "E-MAIL DIRETO",
       cardEmailValue: "contact@plexuscode.com",
       cardSecurityLabel: "GARANTIA TÉCNICA",
       cardSecurityMotto: "Secure by design. Scalable by default.",
-      // Placeholders
       namePlaceholder: "Ex. Alexander Wright",
       emailPlaceholder: "contato@empresa.com",
       messagePlaceholder: "Descreva o escopo do projeto, requisitos de arquitetura ou prazos esperados...",
@@ -590,5 +603,16 @@ contact: {
       terms: "TERMOS",
       zeroTrustPolicies: "POLÍTICAS ZERO TRUST",
     },
+    chatWidget: {
+      ariaLabel: "Abrir assistente de IA",
+      botName: "Cyrus AI",
+      status: "Online e pronto",
+      inputPlaceholder: "Digite sua mensagem...",
+      connecting: "Conectando ao motor de Inteligência Artificial...",
+      tooltip: "Olá! Tem alguma pergunta? Fale conosco por aqui.",
+      selectionTitle: "Como você prefere conversar?",
+      optionText: "Chat por texto",
+      optionVoice: "Assistência por voz"
+    }
   },
 };

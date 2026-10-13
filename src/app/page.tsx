@@ -13,6 +13,7 @@ import CtaBanner from "@/components/CtaBanner";
 import ContactModal from "@/components/ContactModal";
 import AboutModal from "@/components/AboutModal";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/ChatWidget"; // <-- IMPORTACIÓN DEL WIDGET
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -32,6 +33,7 @@ export default function Home() {
         <TechStack />
         <CtaBanner onOpenContact={() => setIsContactOpen(true)} />
         <Footer />
+        
         <ContactModal
           isOpen={isContactOpen}
           onClose={() => setIsContactOpen(false)}
@@ -40,6 +42,9 @@ export default function Home() {
           isOpen={isAboutOpen}
           onClose={() => setIsAboutOpen(false)}
         />
+        
+        {/* WIDGET INTEGRADO AQUÍ: Dentro del Provider, pero flotando globalmente */}
+        <ChatWidget />
       </main>
     </LanguageProvider>
   );
