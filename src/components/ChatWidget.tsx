@@ -196,7 +196,7 @@ export default function ChatWidget() {
                         </div>
                       </div>
                       <div className="bg-slate-800 border border-slate-700 text-slate-200 text-sm sm:text-base p-4 sm:p-5 rounded-2xl rounded-tl-sm max-w-[85%] leading-relaxed shadow-sm">
-                        Hola. Soy Leo, el SDR digital de Plexus Code. Estoy aquí para analizar tu cuello de botella operativo y diseñar la arquitectura adecuada para escalar. ¿En qué proyecto o software están pensando?
+                        Hola, soy Leo de Plexus Code. Ayudamos a empresas a automatizar sus procesos y crear software a medida para escalar su operación. ¿Qué idea tienes en mente o qué proceso de tu negocio buscas mejorar hoy?
                       </div>
                     </div>
 
