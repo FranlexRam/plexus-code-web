@@ -6,12 +6,28 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Bot, Mic, MessageSquareText, ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import { useChat } from "@ai-sdk/react";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(true);
   const [chatMode, setChatMode] = useState<'selection' | 'text' | 'voice'>('selection');
   const { t } = useLanguage();
+
+  // Estado nativo de React para controlar el input (requerido por AI SDK v5/v6)
+  const [input, setInput] = useState("");
+
+  // Nuevas propiedades oficiales de useChat en AI SDK v5/v6 (apunta a /api/chat por defecto)
+  const { messages, sendMessage, status, error } = useChat();
+
+  const isLoading = status === 'submitted' || status === 'streaming';
+
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+    sendMessage({ text: input });
+    setInput("");
+  };
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
@@ -38,13 +54,13 @@ export default function ChatWidget() {
             </button>
             <div className="flex gap-3 items-start">
               <div className="w-8 h-8 rounded-full bg-slate-950 border border-slate-800 flex-shrink-0 flex items-center justify-center p-1">
-                <Image src="/paso-1.png" width={24} height={24} alt="Cyrus AI" className="object-contain drop-shadow-[0_0_5px_rgba(6,182,212,0.5)]" />
+                <Image src="/paso-1.png" width={24} height={24} alt="Leo AI" className="object-contain drop-shadow-[0_0_5px_rgba(6,182,212,0.5)]" />
               </div>
               <p className="text-xs text-slate-200 mt-1 leading-relaxed pr-2">
                 {t.chatWidget.tooltip}
               </p>
             </div>
-            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-slate-900 border-b border-r border-cyan-500/30 transform rotate-45"></div>
+            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-slate-900 border-b border-cyan-500/30 transform rotate-45"></div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -109,17 +125,18 @@ export default function ChatWidget() {
                     <div className="w-7 h-7 sm:w-10 sm:h-10 relative">
                       <Image 
                         src="/paso-1.png" 
-                        alt="AI Avatar" 
+                        alt="Leo Avatar" 
                         fill
+                        sizes="48px"
                         className="object-contain drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]"
                       />
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-white text-base sm:text-lg tracking-tight">{t.chatWidget.botName}</h3>
+                    <h3 className="font-bold text-white text-base sm:text-lg tracking-tight">Leo</h3>
                     <div className="flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_5px_rgba(16,185,129,0.5)]"></span>
-                      <span className="text-[10px] sm:text-xs text-slate-400 font-mono">{t.chatWidget.status}</span>
+                      <span className="text-[10px] sm:text-xs text-slate-400 font-mono">En línea</span>
                     </div>
                   </div>
                 </div>
@@ -138,7 +155,7 @@ export default function ChatWidget() {
               {chatMode === 'selection' && (
                 <div className="flex flex-col items-center justify-center flex-1 p-6 sm:p-8 bg-slate-900/50">
                   <div className="w-24 h-24 sm:w-32 sm:h-32 mb-6 sm:mb-8 relative drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">
-                    <Image src="/paso-1.png" fill alt="AI" className="object-contain animate-float" />
+                    <Image src="/paso-1.png" fill sizes="128px" alt="AI" className="object-contain animate-float" />
                   </div>
                   <h4 className="text-xl sm:text-2xl text-white font-extrabold mb-6 sm:mb-8 text-center">{t.chatWidget.selectionTitle}</h4>
                   
@@ -170,28 +187,64 @@ export default function ChatWidget() {
               {chatMode === 'text' && (
                 <>
                   <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-slate-900/50 space-y-4 sm:space-y-6">
+                    
+                    {/* 1. SALUDO INICIAL FIJO (Siempre visible) */}
                     <div className="flex items-start gap-3 sm:gap-4">
                       <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-800 border border-cyan-500/20 flex-shrink-0 flex items-center justify-center relative">
                         <div className="w-5 h-5 sm:w-7 sm:h-7 relative">
-                           <Image src="/paso-1.png" alt="AI" fill className="object-contain" />
+                           <Image src="/paso-1.png" alt="Leo" fill sizes="40px" className="object-contain" />
                         </div>
                       </div>
                       <div className="bg-slate-800 border border-slate-700 text-slate-200 text-sm sm:text-base p-4 sm:p-5 rounded-2xl rounded-tl-sm max-w-[85%] leading-relaxed shadow-sm">
-                        Hola. Soy el asistente autónomo de Plexus Code. Estoy aquí para analizar tu negocio y diseñar una arquitectura de software a tu medida. ¿En qué te puedo ayudar hoy?
+                        Hola. Soy Leo, el SDR digital de Plexus Code. Estoy aquí para analizar tu cuello de botella operativo y diseñar la arquitectura adecuada para escalar. ¿En qué proyecto o software están pensando?
                       </div>
                     </div>
+
+                    {/* 2. MAPEO DINÁMICO DE MENSAJES */}
+                    {messages.map((m) => (
+                      <div key={m.id} className={`flex items-start gap-3 sm:gap-4 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}>
+                        {m.role !== 'user' && (
+                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-800 border border-cyan-500/20 flex-shrink-0 flex items-center justify-center relative">
+                            <div className="w-5 h-5 sm:w-7 sm:h-7 relative">
+                               <Image src="/paso-1.png" alt="Leo" fill sizes="40px" className="object-contain" />
+                            </div>
+                          </div>
+                        )}
+                        <div className={`text-sm sm:text-base p-4 sm:p-5 max-w-[85%] leading-relaxed shadow-sm whitespace-pre-wrap ${
+                          m.role === 'user' 
+                            ? 'bg-cyan-600 text-white rounded-2xl rounded-tr-sm' 
+                            : 'bg-slate-800 border border-slate-700 text-slate-200 rounded-2xl rounded-tl-sm'
+                        }`}>
+                          {m.parts.map((part, index) =>
+                            part.type === 'text' ? <span key={index}>{part.text}</span> : null
+                          )}
+                        </div>
+                      </div>
+                    ))}
+
+                    {/* 3. ALERTA DE ERROR (Detector del fallo silencioso) */}
+                    {error && (
+                      <div className="bg-red-900/50 border border-red-500 text-red-200 text-sm p-4 rounded-xl text-center shadow-lg mt-4">
+                        <p className="font-bold uppercase tracking-wider mb-1">Intercepción del Servidor</p>
+                        <p>{error.message || "El backend /api/chat devolvió un error 500."}</p>
+                      </div>
+                    )}
                   </div>
 
-                  <div className="p-3 sm:p-6 bg-slate-950 border-t border-slate-800">
+                  {/* Formulario de envío conectado a sendMessage */}
+                  <form onSubmit={handleFormSubmit} className="p-3 sm:p-6 bg-slate-950 border-t border-slate-800">
                     <div className="relative">
                       <input 
                         type="text" 
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)} 
                         placeholder={t.chatWidget.inputPlaceholder} 
-                        disabled
+                        disabled={isLoading}
                         className="w-full bg-slate-900 border border-slate-700 rounded-xl py-3 sm:py-4 pl-4 sm:pl-5 pr-12 sm:pr-14 text-sm sm:text-base text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors disabled:opacity-50"
                       />
                       <button 
-                        disabled
+                        type="submit"
+                        disabled={isLoading || !input.trim()}
                         className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 p-2 text-cyan-500 hover:text-cyan-400 disabled:text-slate-600 transition-colors"
                       >
                         <Send className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -199,14 +252,14 @@ export default function ChatWidget() {
                     </div>
                     <div className="text-center mt-2 sm:mt-3">
                       <span className="text-[9px] sm:text-[10px] text-slate-500 font-mono uppercase tracking-wider">
-                        {t.chatWidget.connecting}
+                        {isLoading ? 'Conectando...' : t.chatWidget.connecting}
                       </span>
                     </div>
-                  </div>
+                  </form>
                 </>
               )}
 
-              {/* VISTA C: Asistencia por Voz (En construcción) */}
+              {/* VISTA C: Asistencia por Voz */}
               {chatMode === 'voice' && (
                 <div className="flex flex-col items-center justify-center flex-1 p-6 sm:p-8 bg-slate-900/50 text-center">
                    <div className="relative mb-6 sm:mb-8">

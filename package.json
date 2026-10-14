@@ -15,6 +15,9 @@
     "node": ">=22"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^4.0.93",
+    "@ai-sdk/react": "^4.0.142",
+    "ai": "^7.0.139",
     "framer-motion": "^14.1.0",
     "lucide-react": "^1.31.0",
     "next": "16.3.1",
